@@ -2,131 +2,129 @@
 
 **One identity. Every AI.**
 
-AI Passport is an open, portable identity layer for artificial intelligence systems. Users own their AI identity — not OpenAI, not Anthropic, not Cursor. Any AI can recognize you with explicit permission, without starting over.
+AI Passport is an open identity layer for AI systems. It allows users—not AI providers—to own, manage and securely share their AI identity across applications.
 
-## Mission
+[![npm](https://img.shields.io/npm/v/@ai-passport-core/cli)](https://www.npmjs.com/package/@ai-passport-core/cli)
+[![license](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
-> **One identity. Every AI.**
+**Links:** [npm](https://www.npmjs.com/package/@ai-passport-core/cli) · [GitHub](https://github.com/Mendocan/ai-passport) · [Manifesto](docs/MANIFESTO.md) · [Cursor Setup](docs/CURSOR_SETUP.md)
 
-Supporting line:
+---
 
-> *Your AI identity. Everywhere.*
-
-## Vision
-
-Today every AI platform starts from zero. Users repeatedly explain who they are, how they work, what they prefer, and what projects they are on. AI Passport solves this by letting users own a portable identity that AI systems read only with permission.
-
-**North star:** A user should be recognized by any AI, with explicit permission, without having to start over.
-
-Long term, AI Passport becomes for artificial intelligence what OAuth became for authentication — users choose **Sign in with AI Passport** instead of rebuilding context on every platform.
-
-## Core Principles
-
-| Principle | Summary |
-|-----------|---------|
-| User ownership | The passport belongs to the user |
-| Portable | Works across ChatGPT, Claude, Cursor, VS Code, and future AI systems |
-| Permission-based | Each AI receives only explicitly allowed sections |
-| Local-first | Primary storage on the user's device; cloud sync optional |
-| Encrypted | Each section encrypted independently |
-| Extensible | Plugins enrich the passport (Git, GitHub, Notion, Jira, etc.) |
-
-## MVP Focus
-
-Developer-focused first release with Cursor integration:
-
-1. User installs AI Passport
-2. Cursor detects an existing passport
-3. User grants permission
-4. Cursor loads coding preferences and active project context
-5. AI understands the developer immediately — no manual onboarding
-
-## Repository Layout
-
-```
-ai-passport/
-├── docs/
-│   ├── VISION.md          # Constitution — mission & principles
-│   ├── ARCHITECTURE.md    # Core independence, layer model
-│   ├── SPEC.md            # Technical specification (evolves)
-│   ├── ROADMAP.md         # Phases
-│   ├── SECURITY.md        # Encryption & threat model
-│   └── API.md             # Consumer contract
-├── config/
-│   └── grant-templates.json   # CLI convenience (not imported by core)
-├── src/
-│   ├── core/              # Passport, Vault, Identity, Permission, PassportManager
-│   ├── crypto/            # cipher, keychain
-│   ├── cli/               # Commands
-│   └── schema/            # JSON Schema validation
-├── plugins/
-│   └── git/
-│       ├── plugin.json
-│       └── (analyzer in src/plugins/git/)
-├── src/plugins/git/       # Git repository analyzer
-├── examples/
-│   └── mcp.cursor.json    # Cursor MCP config sample
-```
-
-## Documentation
-
-- [Vision (constitution)](docs/VISION.md)
-- [Architecture](docs/ARCHITECTURE.md)
-- [Technical Specification](docs/SPEC.md)
-- [Roadmap](docs/ROADMAP.md)
-- [Security](docs/SECURITY.md)
-- [Publishing](docs/PUBLISHING.md)
-
-## Status
-
-**Phase 1 — MCP ready.** Core + CLI + Cursor MCP adapter (`ai-passport mcp serve`).
-
-## Install (npm)
+## Quick start
 
 ```bash
 npm install -g @ai-passport-core/cli
 ai-passport init
 ai-passport grant cursor --yes
-ai-passport plugin run git --path . --yes --force
+ai-passport plugin run git --path . --yes
 ai-passport export cursor
 ```
 
-Without global install:
+Without global install: `npx @ai-passport-core/cli init`
 
-```bash
-npx @ai-passport-core/cli init
+---
+
+## Mission
+
+> **One identity. Every AI.**
+
+Supporting line: *Your AI identity. Everywhere.*
+
+**North star:** A user should be recognized by any AI, with explicit permission, without having to start over.
+
+---
+
+## What it does
+
+| Feature | Description |
+|---------|-------------|
+| **Local passport** | Encrypted identity at `~/.ai-passport/` |
+| **Permissions** | Grant / revoke per AI consumer (Cursor, etc.) |
+| **Git plugin** | Detect languages, frameworks, project from repo |
+| **MCP server** | Cursor reads passport via `ai-passport mcp serve` |
+| **Portable schema** | Open `passport.schema.json` format |
+
+---
+
+## Cursor integration
+
+See **[docs/CURSOR_SETUP.md](docs/CURSOR_SETUP.md)** for the full setup and "wow moment" test.
+
+MCP config (after global install):
+
+```json
+{
+  "mcpServers": {
+    "ai-passport": {
+      "command": "ai-passport",
+      "args": ["mcp", "serve", "--consumer", "cursor"]
+    }
+  }
+}
 ```
 
-## Development (local)
+---
 
-`ai-passport` is not global by default. Use one of these:
+## CLI commands
+
+| Command | Description |
+|---------|-------------|
+| `ai-passport init` | Create encrypted passport |
+| `ai-passport info` | Passport ID, grants, version |
+| `ai-passport grant <consumer>` | Approve scoped access |
+| `ai-passport revoke <consumer>` | Revoke all grants |
+| `ai-passport export <consumer>` | Filtered JSON context |
+| `ai-passport plugin run git` | Analyze repo → coding profile |
+| `ai-passport mcp serve` | Start MCP server (stdio) |
+
+---
+
+## Programmatic API
+
+```typescript
+import { PassportManager } from '@ai-passport-core/cli';
+
+const manager = new PassportManager();
+const info = await manager.info();
+const context = await manager.export('cursor');
+```
+
+---
+
+## Documentation
+
+- [Manifesto](docs/MANIFESTO.md) — contribution compass (8 principles)
+- [Vision (constitution)](docs/VISION.md)
+- [Architecture](docs/ARCHITECTURE.md)
+- [Cursor Setup](docs/CURSOR_SETUP.md)
+- [Technical Specification](docs/SPEC.md)
+- [Roadmap](docs/ROADMAP.md)
+- [Security](docs/SECURITY.md)
+- [API Contract](docs/API.md)
+
+---
+
+## Development
 
 ```bash
+git clone https://github.com/Mendocan/ai-passport.git
+cd ai-passport
+npm install
 npm run build
 npm run passport -- init --from-example
-npm run passport -- grant cursor --yes
-npm run passport -- plugin run git --path . --yes --force
-npm run passport -- export cursor
+npm test
 ```
 
-Alternatives:
+---
 
-```bash
-node dist/index.js init --from-example
-npx ai-passport init --from-example    # works inside this project after npm install
-npm run dev -- init --from-example      # runs TypeScript directly
-```
+## Status
 
-Global install (optional): `npm link` from project root, then `ai-passport` works everywhere.
+**Phase 1 complete** — Core, CLI, MCP, Git plugin, npm publish.  
+**Phase 2 in progress** — Cursor user experience polish.
 
-Add to Cursor MCP settings — Windows example: `examples/mcp.cursor.windows.json`  
-(Use full path to `dist/index.js` with `node` as command.)
-
-Passport files are stored in `~/.ai-passport/` (encrypted sections + OS keychain master key).
-
+---
 
 ## License
 
 MIT — see [LICENSE](LICENSE).
-
-Publishing guide: [docs/PUBLISHING.md](docs/PUBLISHING.md)

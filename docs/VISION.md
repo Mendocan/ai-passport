@@ -54,4 +54,4 @@ Instead of *"Create a new AI profile"* on every platform, users choose **Sign in
 
 The AI instantly understands who they are, how they work, and how to help — without rebuilding context every time.
 
-See [ROADMAP.md](ROADMAP.md) for phases.
+See [ROADMAP.md](ROADMAP.md) for phases. Contributor principles: [MANIFESTO.md](MANIFESTO.md).

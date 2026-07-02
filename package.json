@@ -41,8 +41,16 @@
     "encryption",
     "developer-tools"
   ],
-  "author": "",
+  "author": "Mendocan",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mendocan/ai-passport.git"
+  },
+  "homepage": "https://github.com/Mendocan/ai-passport#readme",
+  "bugs": {
+    "url": "https://github.com/Mendocan/ai-passport/issues"
+  },
   "publishConfig": {
     "access": "public"
   },
