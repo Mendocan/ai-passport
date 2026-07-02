@@ -2,6 +2,7 @@
 
 import { Command } from 'commander';
 
+import { registerOnboardCommand } from './cli/commands/onboard.js';
 import { registerPluginCommand } from './cli/commands/plugin.js';
 import { registerMcpCommand } from './cli/commands/mcp.js';
 import { registerExportCommand } from './cli/commands/export.js';
@@ -20,6 +21,7 @@ program
   .version(PASSPORT_VERSION);
 
 registerInitCommand(program);
+registerOnboardCommand(program);
 registerInfoCommand(program);
 registerStatusCommand(program);
 registerShowCommand(program);

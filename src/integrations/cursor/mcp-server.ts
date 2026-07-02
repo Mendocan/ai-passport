@@ -3,6 +3,7 @@ import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js'
 import { z } from 'zod';
 
 import { PassportManager } from '../../core/passport-manager.js';
+import { formatReadinessHint, getPassportReadiness } from '../../core/readiness.js';
 import { PASSPORT_VERSION } from '../../types/passport.js';
 
 export interface CursorMcpOptions {
@@ -26,11 +27,34 @@ function toolJson(data: unknown) {
 export async function startCursorMcpServer(options: CursorMcpOptions = {}): Promise<void> {
   const defaultConsumer = options.consumer ?? process.env.AI_PASSPORT_CONSUMER ?? 'cursor';
   const manager = new PassportManager(options.home);
+  const readiness = await getPassportReadiness(defaultConsumer, options.home);
+
+  console.error(formatReadinessHint(readiness));
 
   const server = new McpServer({
     name: 'ai-passport',
     version: PASSPORT_VERSION,
   });
+
+  server.registerTool(
+    'get_passport_status',
+    {
+      description:
+        'Returns passport readiness for auto-discovery (exists, grants, next steps, MCP config hint)',
+      inputSchema: {
+        consumer: z.string().optional().describe('Consumer id; defaults to configured consumer'),
+      },
+    },
+    async ({ consumer }) => {
+      try {
+        const status = await getPassportReadiness(consumer ?? defaultConsumer, options.home);
+        return toolJson(status);
+      } catch (error) {
+        const message = error instanceof Error ? error.message : String(error);
+        return toolError(message);
+      }
+    },
+  );
 
   server.registerTool(
     'get_passport_context',

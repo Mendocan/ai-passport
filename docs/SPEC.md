@@ -1,7 +1,7 @@
 # AI Passport — Technical Specification (MVP)
 
-**Version:** 0.1.0-draft  
-**Status:** Foundation — implementation not started
+**Version:** 1.0.0  
+**Status:** Implemented — see [SPECIFICATION.md](SPECIFICATION.md) for the public spec index
 
 ---
 

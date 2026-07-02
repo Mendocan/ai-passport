@@ -85,6 +85,7 @@ Cursor `mcp.json` example: [`examples/mcp.cursor.json`](../examples/mcp.cursor.j
 
 | Tool | Description |
 |------|-------------|
+| `get_passport_status` | Readiness, grants summary, next steps, MCP config hint |
 | `get_passport_context` | Audited export for granted consumer |
 | `get_active_project` | Read-only peek at first active project |
 | `list_grants` | Active grants summary (no secrets) |

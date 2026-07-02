@@ -71,6 +71,7 @@ MCP config (after global install):
 | Command | Description |
 |---------|-------------|
 | `ai-passport init` | Create encrypted passport |
+| `ai-passport onboard [consumer]` | First-time setup + MCP config |
 | `ai-passport info` | Passport ID, grants, version |
 | `ai-passport grant <consumer>` | Approve scoped access |
 | `ai-passport revoke <consumer>` | Revoke all grants |
@@ -117,6 +118,9 @@ const context = await manager.export('cursor');
 - [Roadmap](docs/ROADMAP.md)
 - [Security](docs/SECURITY.md)
 - [API Contract](docs/API.md)
+- [Open Specification](docs/SPECIFICATION.md)
+- [Compatibility Checklist](docs/COMPATIBILITY.md)
+- [RFC Process](docs/RFC.md)
 
 ---
 
@@ -135,8 +139,8 @@ npm test
 
 ## Status
 
-**Phase 3 complete** — SDK with `Passport.load()` at `@ai-passport-core/cli/sdk`.  
-**Phase 4 next** — Open specification (public spec site, compatibility checklist).
+**Phase 4 complete** — Open spec index, compatibility checklist, RFC process.  
+**Phase 5 next** — Ecosystem (cloud sync, more consumers, Sign in with AI Passport).
 
 ---
 

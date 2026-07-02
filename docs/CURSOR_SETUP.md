@@ -26,6 +26,22 @@ npm install -g @ai-passport-core/cli
 
 ---
 
+## Step 0 — One-command onboarding (recommended)
+
+```bash
+ai-passport onboard cursor --yes
+```
+
+Optional: enrich from your current repo:
+
+```bash
+ai-passport onboard cursor --path . --yes
+```
+
+This creates the passport (if needed), grants Cursor, and prints the MCP config.
+
+---
+
 ## Step 1 — Create your passport
 
 ```bash
@@ -104,6 +120,7 @@ In Cursor, confirm these tools are available:
 
 | Tool | Purpose |
 |------|---------|
+| `get_passport_status` | Readiness check + next steps (auto-discovery) |
 | `get_passport_context` | Full filtered export (audited) |
 | `get_active_project` | Current active project |
 | `list_grants` | Active permission summary |
@@ -131,7 +148,7 @@ Open a new Cursor chat and ask:
 | `Master key not found` | `ai-passport init --force` |
 | `No active grant for cursor` | `ai-passport grant cursor --yes` |
 | `Unsupported state or unable to authenticate` | `ai-passport init --force` then re-grant |
-| MCP tools not visible | Restart Cursor; verify `ai-passport` is on PATH |
+| MCP tools not visible | Restart Cursor; run `ai-passport onboard cursor`; verify `ai-passport` is on PATH |
 | Wrong coding profile | `ai-passport plugin run git --path . --yes --force` |
 
 ---

@@ -23,8 +23,8 @@ First real user experience — the "wow" moment.
 
 - [x] MCP adapter + grant flow
 - [x] End-to-end Cursor test → [CURSOR_SETUP.md](CURSOR_SETUP.md)
-- [ ] Auto-discovery UX polish
-- [ ] First-time onboarding flow
+- [x] Auto-discovery UX polish (`get_passport_status`, MCP startup hints)
+- [x] First-time onboarding flow (`ai-passport onboard`)
 
 **Scenario:**
 
@@ -47,13 +47,14 @@ See [SDK.md](SDK.md). Low-level API remains `PassportManager` for advanced use.
 
 Future: optional separate `@ai-passport-core/sdk` npm package (same API, lighter deps).
 
-## Phase 4 — Open specification
+## Phase 4 — Open specification ✓
 
 Documentation over code. Companies should say: *"We support AI Passport."*
 
-- Public spec site
-- Compatibility checklist
-- RFC process for schema changes
+- [x] Public spec index → [SPECIFICATION.md](SPECIFICATION.md)
+- [x] Compatibility checklist → [COMPATIBILITY.md](COMPATIBILITY.md)
+- [x] RFC process → [RFC.md](RFC.md)
+- [ ] Hosted spec site (GitHub Pages)
 
 ## Phase 5 — Ecosystem
 
