@@ -1,0 +1,11 @@
+title: AI Passport
+description: One identity. Every AI. — open portable identity layer for AI systems
+theme: jekyll-theme-cayman
+baseurl: "/ai-passport"
+url: "https://mendocan.github.io"
+
+markdown: GFM
+
+exclude:
+  - Gemfile
+  - Gemfile.lock

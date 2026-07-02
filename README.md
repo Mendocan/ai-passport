@@ -7,7 +7,7 @@ AI Passport is an open identity layer for AI systems. It allows users—not AI p
 [![npm](https://img.shields.io/npm/v/@ai-passport-core/cli)](https://www.npmjs.com/package/@ai-passport-core/cli)
 [![license](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
-**Links:** [npm](https://www.npmjs.com/package/@ai-passport-core/cli) · [GitHub](https://github.com/Mendocan/ai-passport) · [Manifesto](docs/MANIFESTO.md) · [Cursor Setup](docs/CURSOR_SETUP.md)
+**Links:** [Spec site](https://mendocan.github.io/ai-passport/) · [npm](https://www.npmjs.com/package/@ai-passport-core/cli) · [GitHub](https://github.com/Mendocan/ai-passport) · [Manifesto](docs/MANIFESTO.md) · [Cursor Setup](docs/CURSOR_SETUP.md)
 
 ---
 
@@ -121,6 +121,9 @@ const context = await manager.export('cursor');
 - [Open Specification](docs/SPECIFICATION.md)
 - [Compatibility Checklist](docs/COMPATIBILITY.md)
 - [RFC Process](docs/RFC.md)
+- [Sign in with AI Passport (draft)](docs/SIGN_IN.md)
+- [Ecosystem](docs/ECOSYSTEM.md)
+- [VS Code Setup](docs/VSCODE_SETUP.md)
 
 ---
 
@@ -140,7 +143,8 @@ npm test
 ## Status
 
 **Phase 4 complete** — Open spec index, compatibility checklist, RFC process.  
-**Phase 5 next** — Ecosystem (cloud sync, more consumers, Sign in with AI Passport).
+**Phase 5 in progress** — Ecosystem docs, VS Code guide, Sign in draft.  
+**Spec site:** enable GitHub Pages → `/docs` on `main` → [mendocan.github.io/ai-passport](https://mendocan.github.io/ai-passport/)
 
 ---
 

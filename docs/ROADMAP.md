@@ -54,10 +54,13 @@ Documentation over code. Companies should say: *"We support AI Passport."*
 - [x] Public spec index → [SPECIFICATION.md](SPECIFICATION.md)
 - [x] Compatibility checklist → [COMPATIBILITY.md](COMPATIBILITY.md)
 - [x] RFC process → [RFC.md](RFC.md)
-- [ ] Hosted spec site (GitHub Pages)
+- [x] Hosted spec site → [index.md](index.md) (GitHub Pages: `/docs` on `main`)
 
-## Phase 5 — Ecosystem
+## Phase 5 — Ecosystem (in progress)
 
-- Cloud sync (optional, E2E encrypted)
-- VS Code / JetBrains consumers (separate packages)
-- **Sign in with AI Passport**
+- [x] Ecosystem overview → [ECOSYSTEM.md](ECOSYSTEM.md)
+- [x] VS Code consumer guide → [VSCODE_SETUP.md](VSCODE_SETUP.md)
+- [x] Sign in with AI Passport (draft) → [SIGN_IN.md](SIGN_IN.md)
+- [ ] Cloud sync (optional, E2E encrypted)
+- [ ] VS Code extension package
+- [ ] Sign in with AI Passport (implementation)
