@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "ai-passport": {
+      "command": "ai-passport",
+      "args": ["mcp", "serve", "--consumer", "cursor"]
+    }
+  }
+}

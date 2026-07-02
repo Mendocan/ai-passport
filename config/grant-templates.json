@@ -1,0 +1,28 @@
+{
+  "cursor": {
+    "name": "Cursor",
+    "sections": ["identity", "coding", "projects"],
+    "project_filter": "active_only",
+    "fields": {
+      "identity": ["display_name", "role"],
+      "projects": ["name", "stack", "conventions", "repo_root"]
+    }
+  },
+  "claude": {
+    "name": "Claude",
+    "sections": ["identity", "preferences", "coding"],
+    "project_filter": "active_only",
+    "fields": {
+      "identity": ["display_name", "role", "locale"],
+      "preferences": ["language", "communication_style", "verbosity"]
+    }
+  },
+  "vscode": {
+    "name": "VS Code",
+    "sections": ["coding", "projects"],
+    "project_filter": "active_only",
+    "fields": {
+      "projects": ["name", "stack", "repo_root"]
+    }
+  }
+}

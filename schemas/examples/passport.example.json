@@ -1,0 +1,68 @@
+{
+  "version": "1.0.0",
+  "identity": {
+    "display_name": "Developer",
+    "role": "Software Engineer",
+    "timezone": "Europe/Istanbul",
+    "locale": "tr",
+    "bio": "Building AI Passport — portable identity for AI systems."
+  },
+  "preferences": {
+    "language": "tr",
+    "communication_style": "balanced",
+    "verbosity": "medium",
+    "explain_before_code": true,
+    "prefer_examples": true
+  },
+  "coding": {
+    "primary_languages": ["TypeScript", "Python"],
+    "frameworks": ["React", "Node.js", "FastAPI"],
+    "style": {
+      "indent": 2,
+      "quotes": "single",
+      "semicolons": true,
+      "line_width": 100,
+      "trailing_comma": true
+    },
+    "conventions": [
+      "Minimize scope in diffs",
+      "Match existing code style",
+      "No PowerShell && chaining"
+    ],
+    "ai_preferences": {
+      "explain_before_code": true,
+      "prefer_minimal_diffs": true,
+      "avoid_unrequested_refactors": true,
+      "match_existing_patterns": true,
+      "write_tests_when_requested": true
+    },
+    "detected_from": {
+      "source": "manual",
+      "analyzed_at": "2025-07-02T12:00:00Z"
+    }
+  },
+  "projects": [
+    {
+      "id": "ai-passport",
+      "name": "AI Passport",
+      "description": "Open portable identity layer for AI systems.",
+      "status": "active",
+      "stack": ["TypeScript", "Node.js"],
+      "conventions": ["local-first", "permission-based", "encrypted sections"],
+      "repo_root": "c:\\Ai_Passport",
+      "started_at": "2025-07-02",
+      "updated_at": "2025-07-02T12:00:00Z"
+    }
+  ],
+  "permissions": {
+    "default_policy": "deny_all",
+    "last_reviewed_at": "2025-07-02T12:00:00Z"
+  },
+  "providers": [
+    {
+      "id": "cursor",
+      "name": "Cursor",
+      "registered_at": "2025-07-02T12:00:00Z"
+    }
+  ]
+}

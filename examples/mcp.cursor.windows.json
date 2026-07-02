@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "ai-passport": {
+      "command": "node",
+      "args": [
+        "C:\\Ai_Passport\\dist\\index.js",
+        "mcp",
+        "serve",
+        "--consumer",
+        "cursor"
+      ]
+    }
+  }
+}
