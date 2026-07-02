@@ -1,6 +1,6 @@
 # AI Passport — API Contract
 
-Consumers integrate with AI Passport via CLI or programmatic API (`PassportManager`). They never read `passport.json` directly.
+Consumers integrate with AI Passport via CLI, SDK, or MCP. They never read `passport.json` directly.
 
 ## Commands
 
@@ -50,8 +50,22 @@ Returned by `export` when an active grant exists:
 
 ## Programmatic API
 
+### SDK (recommended)
+
 ```typescript
-import { PassportManager } from '@ai-passport/core';
+import { Passport } from '@ai-passport-core/cli/sdk';
+
+const passport = await Passport.load();
+const info = await passport.info();
+const context = await passport.export('cursor');
+```
+
+Full reference: [SDK.md](SDK.md)
+
+### Low-level (`PassportManager`)
+
+```typescript
+import { PassportManager } from '@ai-passport-core/cli';
 
 const manager = new PassportManager();
 await manager.init();

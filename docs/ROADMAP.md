@@ -17,12 +17,12 @@
 - [x] npm publish [`@ai-passport-core/cli`](https://www.npmjs.com/package/@ai-passport-core/cli)
 - [x] GitHub repository
 
-## Phase 2 — Cursor integration (current)
+## Phase 2 — Cursor integration ✓
 
 First real user experience — the "wow" moment.
 
 - [x] MCP adapter + grant flow
-- [ ] End-to-end Cursor test documented → [CURSOR_SETUP.md](CURSOR_SETUP.md)
+- [x] End-to-end Cursor test → [CURSOR_SETUP.md](CURSOR_SETUP.md)
 - [ ] Auto-discovery UX polish
 - [ ] First-time onboarding flow
 
@@ -32,18 +32,20 @@ First real user experience — the "wow" moment.
 Cursor opened → Passport found → AI knows your stack → AI adapts
 ```
 
-## Phase 3 — SDK
+## Phase 3 — SDK ✓
 
 Nobody should rewrite AI Passport. Just:
 
 ```typescript
-import { PassportManager } from '@ai-passport-core/cli';
+import { Passport } from '@ai-passport-core/cli/sdk';
 
-const manager = new PassportManager();
-const passport = await manager.read();
+const passport = await Passport.load();
+const context = await passport.export('cursor');
 ```
 
-Future: separate `@ai-passport-core/sdk` package with `Passport.load()`.
+See [SDK.md](SDK.md). Low-level API remains `PassportManager` for advanced use.
+
+Future: optional separate `@ai-passport-core/sdk` npm package (same API, lighter deps).
 
 ## Phase 4 — Open specification
 

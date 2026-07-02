@@ -82,6 +82,20 @@ MCP config (after global install):
 
 ## Programmatic API
 
+**SDK (recommended):**
+
+```typescript
+import { Passport } from '@ai-passport-core/cli/sdk';
+
+const passport = await Passport.load();
+const info = await passport.info();
+const context = await passport.export('cursor');
+```
+
+See [SDK.md](SDK.md) for the full API.
+
+**Low-level:**
+
 ```typescript
 import { PassportManager } from '@ai-passport-core/cli';
 
@@ -98,6 +112,7 @@ const context = await manager.export('cursor');
 - [Vision (constitution)](docs/VISION.md)
 - [Architecture](docs/ARCHITECTURE.md)
 - [Cursor Setup](docs/CURSOR_SETUP.md)
+- [SDK](docs/SDK.md)
 - [Technical Specification](docs/SPEC.md)
 - [Roadmap](docs/ROADMAP.md)
 - [Security](docs/SECURITY.md)
@@ -120,8 +135,8 @@ npm test
 
 ## Status
 
-**Phase 1 complete** — Core, CLI, MCP, Git plugin, npm publish.  
-**Phase 2 in progress** — Cursor user experience polish.
+**Phase 3 complete** — SDK with `Passport.load()` at `@ai-passport-core/cli/sdk`.  
+**Phase 4 next** — Open specification (public spec site, compatibility checklist).
 
 ---
 
