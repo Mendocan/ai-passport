@@ -1,10 +1,10 @@
-# AI Passport — 30 second demo helper
+# AI Passport - 30 second demo helper
 # Run from repo root: .\scripts\demo.ps1
 
 $ErrorActionPreference = "Stop"
 
 Write-Host ""
-Write-Host "AI Passport — Demo Setup" -ForegroundColor Cyan
+Write-Host "AI Passport - Demo Setup" -ForegroundColor Cyan
 Write-Host "========================" -ForegroundColor Cyan
 Write-Host ""
 
@@ -20,9 +20,9 @@ Write-Host ""
 Write-Host "--- Demo ready ---" -ForegroundColor Green
 Write-Host ""
 Write-Host "Next:"
-Write-Host "  1. Open Cursor in: $repoRoot"
+Write-Host ('  1. Open Cursor in: ' + $repoRoot)
 Write-Host "  2. Ensure MCP config from above is in Cursor Settings"
-Write-Host "  3. Ask: What languages and frameworks do I prefer?"
+Write-Host '  3. Ask: What languages and frameworks do I prefer?'
 Write-Host ""
 Write-Host "Full guide: docs/DEMO.md"
 Write-Host ""
