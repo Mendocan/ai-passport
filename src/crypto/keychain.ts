@@ -8,6 +8,17 @@ import { KEYCHAIN_SERVICE, getPassportPaths, getPassportHome } from '../core/pat
 
 const LEGACY_KEYCHAIN_ACCOUNT = 'master';
 
+function preferFileKeyStorage(): boolean {
+  return process.env.AI_PASSPORT_KEY_FILE === '1';
+}
+
+function storeMasterKeyFile(encoded: string, home?: string, account?: string): void {
+  const paths = getPassportPaths(home);
+  fs.mkdirSync(paths.keysDir, { recursive: true });
+  fs.writeFileSync(getMasterKeyFile(home), encoded, { encoding: 'utf8', mode: 0o600 });
+  writeKeyRef(home, 'file-fallback', account ?? getKeychainAccount(home));
+}
+
 function getKeychainAccount(home?: string): string {
   const passportHome = getPassportHome(home);
   const hash = createHash('sha256').update(passportHome).digest('hex').slice(0, 16);
@@ -19,6 +30,10 @@ function getMasterKeyFile(home?: string): string {
 }
 
 export async function hasMasterKey(home?: string): Promise<boolean> {
+  if (preferFileKeyStorage()) {
+    return fs.existsSync(getMasterKeyFile(home));
+  }
+
   const account = getKeychainAccount(home);
   const stored = await keytar.getPassword(KEYCHAIN_SERVICE, account);
   if (stored) {
@@ -34,6 +49,17 @@ export async function hasMasterKey(home?: string): Promise<boolean> {
 }
 
 export async function loadMasterKey(home?: string): Promise<Buffer> {
+  const keyFile = getMasterKeyFile(home);
+  if (preferFileKeyStorage() || fs.existsSync(keyFile)) {
+    if (fs.existsSync(keyFile)) {
+      const encoded = fs.readFileSync(keyFile, 'utf8').trim();
+      return Buffer.from(encoded, 'base64');
+    }
+    if (preferFileKeyStorage()) {
+      throw new Error('Master key not found. Run `ai-passport init` first.');
+    }
+  }
+
   const account = getKeychainAccount(home);
   const fromKeychain = await keytar.getPassword(KEYCHAIN_SERVICE, account);
   if (fromKeychain) {
@@ -47,7 +73,6 @@ export async function loadMasterKey(home?: string): Promise<Buffer> {
     }
   }
 
-  const keyFile = getMasterKeyFile(home);
   if (fs.existsSync(keyFile)) {
     const encoded = fs.readFileSync(keyFile, 'utf8').trim();
     return Buffer.from(encoded, 'base64');
@@ -60,6 +85,11 @@ export async function storeMasterKey(masterKey: Buffer, home?: string): Promise<
   const encoded = masterKey.toString('base64');
   const account = getKeychainAccount(home);
 
+  if (preferFileKeyStorage()) {
+    storeMasterKeyFile(encoded, home, account);
+    return;
+  }
+
   try {
     await keytar.setPassword(KEYCHAIN_SERVICE, account, encoded);
     if (!home) {
@@ -68,10 +98,7 @@ export async function storeMasterKey(masterKey: Buffer, home?: string): Promise<
     writeKeyRef(home, 'os-keychain', account);
     return;
   } catch {
-    const paths = getPassportPaths(home);
-    fs.mkdirSync(paths.keysDir, { recursive: true });
-    fs.writeFileSync(getMasterKeyFile(home), encoded, { encoding: 'utf8', mode: 0o600 });
-    writeKeyRef(home, 'file-fallback', account);
+    storeMasterKeyFile(encoded, home, account);
   }
 }
 
@@ -99,6 +126,10 @@ function writeKeyRef(
 }
 
 export async function getKeyStorageKind(home?: string): Promise<'os-keychain' | 'file-fallback' | 'missing'> {
+  if (preferFileKeyStorage()) {
+    return fs.existsSync(getMasterKeyFile(home)) ? 'file-fallback' : 'missing';
+  }
+
   const keyRef = getPassportPaths(home).keyRef;
   if (!fs.existsSync(keyRef)) {
     const account = getKeychainAccount(home);

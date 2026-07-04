@@ -35,7 +35,7 @@
     "passport": "node dist/index.js",
     "prepublishOnly": "npm run rebuild && npm test",
     "prepack": "npm run rebuild",
-    "test": "tsx --test tests/**/*.test.ts",
+    "test": "node --env-file=tests/test.env ./node_modules/tsx/dist/cli.mjs --test tests/**/*.test.ts",
     "test:sdk-package": "npm run build:sdk && tsx --test tests/sdk-package.test.ts",
     "demo": "powershell -ExecutionPolicy Bypass -File scripts/demo.ps1",
     "typecheck": "tsc --noEmit",
