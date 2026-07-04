@@ -89,5 +89,10 @@ After acceptance:
 | RFC | Title | Status |
 |-----|-------|--------|
 | [0001](rfcs/0001-passport-format.md) | Passport document format v1.0.0 | Accepted |
+| [0002](rfcs/0002-provider-api.md) | Provider / consumer API | Accepted |
+| [0003](rfcs/0003-permission-model.md) | Permission & grant model | Accepted |
+| [0004](rfcs/0004-encryption.md) | Encryption & key storage | Accepted |
+| [0005](rfcs/0005-sign-in-token.md) | Sign-in token format | Accepted |
+| [0006](rfcs/0006-cloud-sync.md) | Cloud sync (E2E encrypted) | Draft |
 
 Submit the first RFC when proposing schema v1.1.0 or new standard sections.

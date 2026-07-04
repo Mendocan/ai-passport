@@ -41,7 +41,7 @@ Gerçek değer **standartta** — sadece CLI'da değil.
 | 1 | **API stabilitesi** — create/read/verify/permission imzaları sabit kalsın | Kritik, doğru. SDK facade bunun için var. | Kısmen ✓ |
 | 2 | **SemVer'e sıkı bağlılık** | ROADMAP'te yoktu; bu dosyaya eklendi. | Bu dosyada ✓ |
 | 3 | **Testler** — şifreleme, bütünlük, yetki, şema, geriye uyumluluk | Kimlik katmanı için şart. Eksikler var. | Kısmen ✓ |
-| 4 | **RFC mantığı** — `/docs/rfcs/0001-...` | RFC.md var; ilk RFC dosyaları henüz yok. | Süreç ✓, içerik ☐ |
+| 4 | **RFC mantığı** — `/docs/rfcs/0001-...` | RFC 0001–0005 Accepted | ✓ |
 | 5 | **30 sn demo** — init → Cursor → "Welcome back" | Phase 2 wow test var; kayıtlı demo/video yok. | Kısmen ✓ |
 
 **Sonuç:** Öneriler **değerlendirilmeli ve uygulanmalı** — çoğu zaten yarı yolda; eksikler bu dosyada takip edilecek.
@@ -69,9 +69,9 @@ Internal/refactor serbest; public export ve CLI komut isimleri dikkatli değişt
 
 | Alan | Mevcut | Eksik / yapılacak |
 |------|--------|-------------------|
-| Şifreleme | `cipher.test` | Keychain fallback, corrupt blob |
-| Passport bütünlüğü | `core.test` | Schema reject, corrupt meta |
-| Yetki | `permission.test`, `auth-token.test` | Field filter edge cases |
+| Şifreleme | `cipher.test`, `security.test` | Keychain fallback integration |
+| Passport bütünlüğü | `core.test`, `schema.test` | Corrupt meta envelope |
+| Yetki | `permission.test`, `auth-token.test`, `security.test` | — |
 | Şema doğrulama | validator kullanılıyor | ✓ `schema.test.ts` |
 | Geriye dönük uyumluluk | — | ✓ fixtures + semver test |
 | MCP / readiness | `readiness.test` | MCP tool contract smoke test |
@@ -85,11 +85,11 @@ Internal/refactor serbest; public export ve CLI komut isimleri dikkatli değişt
 | RFC | Başlık | Öncelik |
 |-----|--------|---------|
 | 0001 | Passport format & envelope v1.0.0 | ✓ Accepted |
-| 0002 | Provider / consumer API | Orta |
-| 0003 | Permission & grant model | Orta — mevcut implementasyonu belgele |
-| 0004 | Encryption & key storage | Yüksek — SECURITY.md ile hizala |
-| 0005 | Sign in token format (JWT vs opaque) | Orta — SIGN_IN.md sonrası |
-| 0006 | Cloud sync (E2E encrypted) | Düşük — Phase 5 |
+| 0002 | Provider / consumer API | ✓ Accepted |
+| 0003 | Permission & grant model | ✓ Accepted |
+| 0004 | Encryption & key storage | ✓ Accepted |
+| 0005 | Sign in token format | ✓ Accepted |
+| 0006 | Cloud sync (E2E encrypted) | Draft — Phase 5 |
 
 Süreç: [RFC.md](RFC.md)
 
@@ -117,21 +117,23 @@ ai-passport onboard cursor --path . --yes
 
 ### Şimdi — istikrar & görünürlük
 
-- [ ] GitHub Release **v0.1.3** (Sign in) — [releases/v0.1.3.md](releases/v0.1.3.md)
+- [x] GitHub Release **v0.1.3** (Sign in)
 - [x] İlk RFC: **0001-passport-format.md**
+- [x] RFC **0002–0005** Accepted
 - [x] Test: schema validation + backward compat fixture
+- [x] Test: encryption integrity + permission field filters
 - [ ] 30 sn demo videosu veya GIF → [DEMO.md](DEMO.md) rehberi hazır
 
 ### Sonra — Phase 5
 
-- [ ] Cloud sync tasarım RFC (0006)
+- [x] Cloud sync tasarım RFC (0006) — Draft
 - [ ] VS Code extension paketi (ayrı repo veya monorepo)
 - [ ] `@ai-passport-core/sdk` ayrı npm paketi (hafif bağımlılık)
 
 ### v0.5 MVP kriterleri (çıkış kapısı)
 
 - [ ] SDK + CLI API donmuş (CHANGELOG'da breaking yok)
-- [ ] RFC 0001 ✓ · 0002–0004 Accepted
+- [ ] RFC 0001–0005 ✓ · 0006 (cloud sync) Draft
 - [ ] Uyumluluk checklist'i en az 1 harici consumer doğruladı
 - [ ] Demo yayında
 - [ ] Test coverage: yukarıdaki tablonun tamamı yeşil
