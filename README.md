@@ -118,6 +118,7 @@ const context = await manager.export('cursor');
 - [SDK](docs/SDK.md)
 - [Technical Specification](docs/SPEC.md)
 - [Roadmap](docs/ROADMAP.md)
+- [Planning & TODO](docs/PLANNING.md)
 - [Security](docs/SECURITY.md)
 - [API Contract](docs/API.md)
 - [Open Specification](docs/SPECIFICATION.md)
@@ -126,6 +127,16 @@ const context = await manager.export('cursor');
 - [Sign in with AI Passport (draft)](docs/SIGN_IN.md)
 - [Ecosystem](docs/ECOSYSTEM.md)
 - [VS Code Setup](docs/VSCODE_SETUP.md)
+
+---
+
+## Demo (30 seconds)
+
+```powershell
+.\scripts\demo.ps1
+```
+
+See [docs/DEMO.md](docs/DEMO.md) · Record a GIF for README when ready.
 
 ---
 

@@ -1,0 +1,11 @@
+{
+  "version": "1.0.0",
+  "identity": {},
+  "preferences": {},
+  "coding": {},
+  "projects": [],
+  "permissions": {
+    "default_policy": "deny_all"
+  },
+  "providers": []
+}

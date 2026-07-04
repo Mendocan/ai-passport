@@ -29,6 +29,7 @@
     "prepublishOnly": "npm run rebuild && npm test",
     "prepack": "npm run rebuild",
     "test": "tsx --test tests/**/*.test.ts",
+    "demo": "powershell -ExecutionPolicy Bypass -File scripts/demo.ps1",
     "typecheck": "tsc --noEmit",
     "pack:check": "npm pack --dry-run"
   },

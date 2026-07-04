@@ -29,6 +29,8 @@ ai-passport onboard cursor --yes
 | [Security](SECURITY.html) | Encryption and threat model |
 | [RFC Process](RFC.html) | Propose schema changes |
 | [Roadmap](ROADMAP.html) | Project phases |
+| [Planning & TODO](PLANNING.html) | SemVer, RFC backlog, active tasks |
+| [Demo script](DEMO.html) | 30-second wow moment |
 | [Sign in with AI Passport](SIGN_IN.html) | `authorize` + token exchange |
 | [Ecosystem](ECOSYSTEM.html) | Phase 5 vision |
 

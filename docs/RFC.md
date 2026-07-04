@@ -88,6 +88,6 @@ After acceptance:
 
 | RFC | Title | Status |
 |-----|-------|--------|
-| — | None open yet | — |
+| [0001](rfcs/0001-passport-format.md) | Passport document format v1.0.0 | Accepted |
 
 Submit the first RFC when proposing schema v1.1.0 or new standard sections.
