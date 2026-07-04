@@ -16,6 +16,10 @@ Consumers integrate with AI Passport via CLI, SDK, or MCP. They never read `pass
 | `ai-passport token exchange <token>` | Exchange token for Passport Context |
 | `ai-passport revoke <consumer>` | Revoke all grants and tokens |
 | `ai-passport export <consumer>` | Get filtered Passport Context JSON |
+| `ai-passport sync status` | Compare local vs remote sync bundle |
+| `ai-passport sync push` | Upload encrypted bundle (no master key) |
+| `ai-passport sync pull` | Download encrypted bundle |
+| `ai-passport sync config --target <dir>` | Save default sync directory |
 
 ## Passport Context (export output)
 

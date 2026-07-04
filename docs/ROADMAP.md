@@ -64,6 +64,6 @@ Documentation over code. Companies should say: *"We support AI Passport."*
 - [x] VS Code consumer guide → [VSCODE_SETUP.md](VSCODE_SETUP.md)
 - [x] Sign in with AI Passport (draft) → [SIGN_IN.md](SIGN_IN.md)
 - [x] Sign in with AI Passport (implementation) → `authorize`, `token exchange`
-- [ ] Cloud sync (optional, E2E encrypted)
+- [ ] Cloud sync (optional, E2E encrypted) — file provider ✓ v0.1.5; HTTP provider TBD
 - [x] VS Code extension package → [`extensions/vscode/`](../extensions/vscode/)
 - [ ] VS Code extension Marketplace publish

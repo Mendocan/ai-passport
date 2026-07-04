@@ -12,6 +12,7 @@ import { registerInfoCommand, registerStatusCommand } from './cli/commands/info.
 import { registerInitCommand } from './cli/commands/init.js';
 import { registerReadinessCommand } from './cli/commands/readiness.js';
 import { registerRevokeCommand } from './cli/commands/revoke.js';
+import { registerSyncCommand } from './cli/commands/sync.js';
 import { registerShowCommand } from './cli/commands/show.js';
 import { registerTokenCommand } from './cli/commands/token.js';
 import { PASSPORT_VERSION } from './types/passport.js';
@@ -36,5 +37,6 @@ registerTokenCommand(program);
 registerExportCommand(program);
 registerMcpCommand(program);
 registerPluginCommand(program);
+registerSyncCommand(program);
 
 program.parseAsync(process.argv);

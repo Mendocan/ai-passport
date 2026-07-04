@@ -3,7 +3,7 @@
 > **Amaç:** Projeyi fazlar (ROADMAP) ile günlük işler (bu dosya) arasında net ayırarak istikrarlı ilerlemek.  
 > Stratejik vizyon: [ROADMAP.md](ROADMAP.md) · Prensipler: [MANIFESTO.md](MANIFESTO.md)
 
-**Son güncelleme:** 2026-07-04 · **npm:** `@ai-passport-core/cli@0.1.4` · `@ai-passport-core/sdk@0.1.0` · **Görünürlük:** X + LinkedIn (aşağıya bakın)
+**Son güncelleme:** 2026-07-04 · **npm:** `@ai-passport-core/cli@0.1.5` · `@ai-passport-core/sdk@0.1.0` · **Görünürlük:** X + LinkedIn (aşağıya bakın)
 
 ---
 
@@ -161,6 +161,7 @@ Bu politika **AI Passport** ve **diğer projeler** için geçerlidir. İnsanlar 
 ### Sonra — Phase 5
 
 - [x] Cloud sync tasarım RFC (0006) — Draft
+- [x] Cloud sync prototype CLI (`sync push/pull/status`) — v0.1.5
 - [x] `@ai-passport-core/sdk` workspace paketi → `packages/sdk/`
 - [x] `@ai-passport-core/sdk` npm publish → [v0.1.0](https://www.npmjs.com/package/@ai-passport-core/sdk)
 - [x] `@ai-passport-core/cli` npm publish → [v0.1.4](https://www.npmjs.com/package/@ai-passport-core/cli)
@@ -194,6 +195,7 @@ Bu politika **AI Passport** ve **diğer projeler** için geçerlidir. İnsanlar 
 | 0.1.2 | `onboard`, open spec, GitHub Pages |
 | 0.1.3 | Sign in — `authorize`, `token exchange` |
 | 0.1.4 | `readiness` CLI, VS Code MCP format, extension scaffold |
+| 0.1.5 | Cloud sync prototype — `sync push/pull` (RFC 0006) |
 
 Detay: [ROADMAP.md](ROADMAP.md) · Release notları: [releases/](releases/)
 

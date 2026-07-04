@@ -25,6 +25,7 @@ export function getPassportPaths(home?: string) {
     authDir: path.join(root, 'auth'),
     tokens: path.join(root, 'auth', 'tokens.json'),
     pluginsDir: path.join(root, 'plugins'),
+    syncConfig: path.join(root, 'sync.json'),
   };
 }
 

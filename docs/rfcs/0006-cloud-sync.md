@@ -65,6 +65,16 @@ Device A                         Sync server                    Device B
 
 1. Discussion on GitHub
 2. Threat model appendix
-3. Prototype CLI: `ai-passport sync push` / `pull`
+3. ~~Prototype CLI: `ai-passport sync push` / `pull`~~ **v0.1.5 prototype** — file provider (local/cloud folder)
 
-**Not implemented in v0.1.x.**
+### Prototype usage (v0.1.5)
+
+```bash
+ai-passport sync config --target D:\Backups\ai-passport-sync
+ai-passport sync push
+# on second device:
+ai-passport sync config --target <same cloud folder>
+ai-passport sync pull --force
+```
+
+Master key stays on each device; only `passport.json`, `passport.meta.json`, and optional `grants.json` sync.
