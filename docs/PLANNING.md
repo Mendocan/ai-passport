@@ -3,7 +3,7 @@
 > **Amaç:** Projeyi fazlar (ROADMAP) ile günlük işler (bu dosya) arasında net ayırarak istikrarlı ilerlemek.  
 > Stratejik vizyon: [ROADMAP.md](ROADMAP.md) · Prensipler: [MANIFESTO.md](MANIFESTO.md)
 
-**Son güncelleme:** 2026-07-04 · **npm:** `@ai-passport-core/cli@0.1.3` · **Görünürlük:** X + LinkedIn (aşağıya bakın)
+**Son güncelleme:** 2026-07-04 · **npm:** `@ai-passport-core/cli@0.1.3` · `@ai-passport-core/sdk@0.1.0` · **Görünürlük:** X + LinkedIn (aşağıya bakın)
 
 ---
 
@@ -162,7 +162,7 @@ Bu politika **AI Passport** ve **diğer projeler** için geçerlidir. İnsanlar 
 
 - [x] Cloud sync tasarım RFC (0006) — Draft
 - [x] `@ai-passport-core/sdk` workspace paketi → `packages/sdk/`
-- [ ] `@ai-passport-core/sdk` npm publish (v0.1.0)
+- [x] `@ai-passport-core/sdk` npm publish → [v0.1.0](https://www.npmjs.com/package/@ai-passport-core/sdk)
 - [ ] VS Code extension paketi (ayrı repo veya monorepo)
 - [ ] **v0.2+** çıkışında X + LinkedIn duyurusu ([Görünürlük](#görünürlük--x--linkedin) checklist)
 
@@ -187,7 +187,8 @@ Bu politika **AI Passport** ve **diğer projeler** için geçerlidir. İnsanlar 
 | Sürüm | Öne çıkan |
 |-------|-----------|
 | 0.1.0 | Core, CLI, MCP, git plugin |
-| 0.1.1 | SDK `Passport.load()` |
+| 0.1.1 | SDK `Passport.load()` (CLI export) |
+| 0.1.0-sdk | `@ai-passport-core/sdk` standalone npm paketi |
 | 0.1.2 | `onboard`, open spec, GitHub Pages |
 | 0.1.3 | Sign in — `authorize`, `token exchange` |
 

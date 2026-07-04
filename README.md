@@ -4,10 +4,11 @@
 
 AI Passport is an open identity layer for AI systems. It allows users—not AI providers—to own, manage and securely share their AI identity across applications.
 
-[![npm](https://img.shields.io/npm/v/@ai-passport-core/cli)](https://www.npmjs.com/package/@ai-passport-core/cli)
+[![npm cli](https://img.shields.io/npm/v/@ai-passport-core/cli?label=cli)](https://www.npmjs.com/package/@ai-passport-core/cli)
+[![npm sdk](https://img.shields.io/npm/v/@ai-passport-core/sdk?label=sdk)](https://www.npmjs.com/package/@ai-passport-core/sdk)
 [![license](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
-**Links:** [Spec site](https://mendocan.github.io/ai-passport/) · [npm](https://www.npmjs.com/package/@ai-passport-core/cli) · [GitHub](https://github.com/Mendocan/ai-passport) · [Manifesto](docs/MANIFESTO.md) · [Cursor Setup](docs/CURSOR_SETUP.md)
+**Links:** [Spec site](https://mendocan.github.io/ai-passport/) · [CLI npm](https://www.npmjs.com/package/@ai-passport-core/cli) · [SDK npm](https://www.npmjs.com/package/@ai-passport-core/sdk) · [GitHub](https://github.com/Mendocan/ai-passport) · [Manifesto](docs/MANIFESTO.md) · [Cursor Setup](docs/CURSOR_SETUP.md)
 
 ---
 
