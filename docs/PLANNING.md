@@ -151,7 +151,8 @@ Bu politika **AI Passport** ve **diğer projeler** için geçerlidir. İnsanlar 
 
 ### Şimdi — istikrar & görünürlük
 
-- [x] GitHub Release **v0.1.3** (Sign in)
+- [x] GitHub tag **v0.1.5** pushed
+- [ ] GitHub Release **v0.1.5** → [releases/new?tag=v0.1.5](https://github.com/Mendocan/ai-passport/releases/new?tag=v0.1.5) (tag hazır; web UI ile oluştur)
 - [x] İlk RFC: **0001-passport-format.md**
 - [x] RFC **0002–0005** Accepted
 - [x] Test: schema validation + backward compat fixture
