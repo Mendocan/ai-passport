@@ -3,7 +3,7 @@
 > **Amaç:** Projeyi fazlar (ROADMAP) ile günlük işler (bu dosya) arasında net ayırarak istikrarlı ilerlemek.  
 > Stratejik vizyon: [ROADMAP.md](ROADMAP.md) · Prensipler: [MANIFESTO.md](MANIFESTO.md)
 
-**Son güncelleme:** 2026-07-04 · **npm:** `@ai-passport-core/cli@0.1.3`
+**Son güncelleme:** 2026-07-04 · **npm:** `@ai-passport-core/cli@0.1.3` · **Görünürlük:** X + LinkedIn (aşağıya bakın)
 
 ---
 
@@ -112,6 +112,41 @@ ai-passport onboard cursor --path . --yes
 
 ---
 
+## Görünürlük — X & LinkedIn
+
+> **Kural:** Her commit veya küçük patch paylaşılmaz. Sadece **yeni ve gelişmiş versiyonlar** ile anlamlı kilometre taşları.
+
+Bu politika **AI Passport** ve **diğer projeler** için geçerlidir. İnsanlar sadece sonucu değil, **yolculuğu** da takip etmeyi sever — ama gürültü yapmamak gerekir.
+
+### Ne zaman paylaşılır?
+
+| Tetikleyici | Örnek |
+|-------------|--------|
+| **Yeni sürüm** (minor/major) | `v0.2 released`, `v0.5 MVP`, `v1.0.0` |
+| **Belirgin yeni özellik** | Sign in, cloud sync, yeni güvenlik katmanı |
+| **Entegrasyon / ekosistem** | Cursor MCP, VS Code extension, ilk harici consumer |
+| **Standart / RFC** | RFC-0001 published, spec site canlı |
+| **Topluluk** | İlk contributor, ilk harici implementasyon |
+
+**Paylaşılmaz:** patch fix'ler, CI retry, typo, iç refactor, boş commit, günlük geliştirme notları.
+
+### Platformlar
+
+| Platform | İçerik |
+|----------|--------|
+| **X** | Kısa duyuru — sürüm, tek cümle değer önerisi, link (npm / GitHub / spec site) |
+| **LinkedIn** | Biraz daha uzun — problem, ne değişti, neden önemli, link + görsel (demo GIF, ekran görüntüsü) |
+
+### Checklist (sürüm çıkışında)
+
+- [ ] Release notu / CHANGELOG hazır
+- [ ] GitHub Release + npm publish tamam
+- [ ] X post — 1–2 cümle + link
+- [ ] LinkedIn post — 3–5 cümle + görsel + link
+- [ ] Spec site / demo güncelse linkte belirt
+
+---
+
 ## Aktif yapılacaklar (öncelik sırası)
 
 ### Şimdi — istikrar & görünürlük
@@ -128,6 +163,7 @@ ai-passport onboard cursor --path . --yes
 - [x] Cloud sync tasarım RFC (0006) — Draft
 - [ ] VS Code extension paketi (ayrı repo veya monorepo)
 - [ ] `@ai-passport-core/sdk` ayrı npm paketi (hafif bağımlılık)
+- [ ] **v0.2+** çıkışında X + LinkedIn duyurusu ([Görünürlük](#görünürlük--x--linkedin) checklist)
 
 ### v0.5 MVP kriterleri (çıkış kapısı)
 
