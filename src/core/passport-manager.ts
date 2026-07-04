@@ -1,5 +1,6 @@
 import fs from 'node:fs';
 
+import { AuthTokenStore, type TokenSummary } from './auth-token.js';
 import { generateMasterKey } from '../crypto/cipher.js';
 import { storeMasterKey, getKeyStorageKind } from '../crypto/keychain.js';
 import { createDefaultPassport, generatePassportId } from './identity.js';
@@ -7,7 +8,7 @@ import { Passport } from './passport.js';
 import { Permission, type GrantRequest, type PassportContext } from './permission.js';
 import { ensurePassportDirs, getExamplePassportPath, passportExists } from './paths.js';
 import { Vault, readPassportDocumentFromFile } from './vault.js';
-import type { GrantEntry, PassportDocument, PassportMeta } from '../types/passport.js';
+import type { GrantEntry, PassportDocument, PassportMeta, SectionId } from '../types/passport.js';
 import { PASSPORT_VERSION, SECTION_IDS } from '../types/passport.js';
 
 export interface InitOptions {
@@ -35,6 +36,23 @@ export interface PassportInfo {
   providers: string[];
   permissions: number;
   sections: string[];
+}
+
+export interface AuthorizeOptions {
+  sections?: SectionId[];
+  ttlSeconds?: number;
+  oneTime?: boolean;
+  grantRequest?: GrantRequest;
+  consumerName?: string;
+}
+
+export interface AuthorizeResult {
+  token: string;
+  client_id: string;
+  grant_id: string;
+  passport_id: string;
+  expires_at: string;
+  one_time: boolean;
 }
 
 export class PassportManager {
@@ -137,7 +155,9 @@ export class PassportManager {
   }
 
   revoke(provider: string): number {
-    return this.permission.revoke(provider);
+    const revokedCount = this.permission.revoke(provider);
+    new AuthTokenStore(this.home).revokeTokensForClient(provider);
+    return revokedCount;
   }
 
   async export(provider: string): Promise<PassportContext> {
@@ -181,5 +201,44 @@ export class PassportManager {
       issued_at: grant.issued_at,
       project_filter: grant.project_filter,
     }));
+  }
+
+  async authorize(clientId: string, options: AuthorizeOptions = {}): Promise<AuthorizeResult> {
+    let grant = this.permission.getActiveGrantForProvider(clientId);
+
+    if (!grant) {
+      if (!options.grantRequest) {
+        throw new Error(
+          `No active grant for "${clientId}". Run \`ai-passport grant ${clientId}\` or authorize with --yes to create one.`,
+        );
+      }
+
+      grant = await this.grant(options.grantRequest, options.consumerName);
+    }
+
+    const context = await this.export(clientId);
+    const info = await this.info();
+    const store = new AuthTokenStore(this.home);
+    const record = store.issueToken(clientId, grant.id, info.passportId, context, {
+      ttlSeconds: options.ttlSeconds,
+      oneTime: options.oneTime,
+    });
+
+    return {
+      token: record.id,
+      client_id: clientId,
+      grant_id: grant.id,
+      passport_id: info.passportId,
+      expires_at: record.expires_at,
+      one_time: record.one_time,
+    };
+  }
+
+  exchangeToken(tokenId: string): PassportContext {
+    return new AuthTokenStore(this.home).exchangeToken(tokenId);
+  }
+
+  inspectToken(tokenId: string): TokenSummary {
+    return new AuthTokenStore(this.home).inspectToken(tokenId);
   }
 }

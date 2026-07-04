@@ -61,6 +61,6 @@ Documentation over code. Companies should say: *"We support AI Passport."*
 - [x] Ecosystem overview → [ECOSYSTEM.md](ECOSYSTEM.md)
 - [x] VS Code consumer guide → [VSCODE_SETUP.md](VSCODE_SETUP.md)
 - [x] Sign in with AI Passport (draft) → [SIGN_IN.md](SIGN_IN.md)
+- [x] Sign in with AI Passport (implementation) → `authorize`, `token exchange`
 - [ ] Cloud sync (optional, E2E encrypted)
 - [ ] VS Code extension package
-- [ ] Sign in with AI Passport (implementation)

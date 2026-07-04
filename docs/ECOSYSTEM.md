@@ -49,13 +49,14 @@ Users grant each consumer scoped read access. Revoke anytime.
 
 ### Sign in with AI Passport
 
-OAuth-style flow for web apps:
+OAuth-style flow for web apps — **implemented**. See [SIGN_IN.md](SIGN_IN.md).
 
-1. App requests scopes (sections)
-2. User approves in local CLI or passport app
-3. App receives short-lived context token (not master key)
+```bash
+ai-passport authorize my-app --yes
+ai-passport token exchange aip_tok_...
+```
 
-Draft: [SIGN_IN.md](SIGN_IN.md)
+Future RFC items: JWT, deep links, hosted relay.
 
 ---
 

@@ -9,7 +9,10 @@ Consumers integrate with AI Passport via CLI, SDK, or MCP. They never read `pass
 | `ai-passport init` | Create encrypted passport |
 | `ai-passport info` | Passport ID, version, providers, permissions |
 | `ai-passport grant <consumer>` | Approve scoped read access |
-| `ai-passport revoke <consumer>` | Revoke all grants |
+| `ai-passport authorize <client>` | Issue short-lived sign-in token |
+| `ai-passport token inspect <token>` | Token metadata (no context) |
+| `ai-passport token exchange <token>` | Exchange token for Passport Context |
+| `ai-passport revoke <consumer>` | Revoke all grants and tokens |
 | `ai-passport export <consumer>` | Get filtered Passport Context JSON |
 
 ## Passport Context (export output)

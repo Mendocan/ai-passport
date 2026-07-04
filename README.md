@@ -74,6 +74,8 @@ MCP config (after global install):
 | `ai-passport onboard [consumer]` | First-time setup + MCP config |
 | `ai-passport info` | Passport ID, grants, version |
 | `ai-passport grant <consumer>` | Approve scoped access |
+| `ai-passport authorize <client>` | Sign in — issue short-lived token |
+| `ai-passport token exchange <token>` | Exchange token for context JSON |
 | `ai-passport revoke <consumer>` | Revoke all grants |
 | `ai-passport export <consumer>` | Filtered JSON context |
 | `ai-passport plugin run git` | Analyze repo → coding profile |
@@ -143,8 +145,7 @@ npm test
 ## Status
 
 **Phase 4 complete** — Open spec index, compatibility checklist, RFC process.  
-**Phase 5 in progress** — Ecosystem docs, VS Code guide, Sign in draft.  
-**Spec site:** enable GitHub Pages → `/docs` on `main` → [mendocan.github.io/ai-passport](https://mendocan.github.io/ai-passport/)
+**Phase 5 in progress** — Sign in with AI Passport implemented (`authorize`, `token exchange`).
 
 ---
 

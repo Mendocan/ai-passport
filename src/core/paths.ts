@@ -22,6 +22,8 @@ export function getPassportPaths(home?: string) {
     grants: path.join(root, 'permissions', 'grants.json'),
     auditDir: path.join(root, 'audit'),
     accessLog: path.join(root, 'audit', 'access.log'),
+    authDir: path.join(root, 'auth'),
+    tokens: path.join(root, 'auth', 'tokens.json'),
     pluginsDir: path.join(root, 'plugins'),
   };
 }
@@ -34,6 +36,7 @@ export function ensurePassportDirs(home?: string): ReturnType<typeof getPassport
     paths.keysDir,
     paths.permissionsDir,
     paths.auditDir,
+    paths.authDir,
     paths.pluginsDir,
   ]) {
     fs.mkdirSync(dir, { recursive: true });

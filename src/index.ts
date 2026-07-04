@@ -2,6 +2,7 @@
 
 import { Command } from 'commander';
 
+import { registerAuthorizeCommand } from './cli/commands/authorize.js';
 import { registerOnboardCommand } from './cli/commands/onboard.js';
 import { registerPluginCommand } from './cli/commands/plugin.js';
 import { registerMcpCommand } from './cli/commands/mcp.js';
@@ -11,6 +12,7 @@ import { registerInfoCommand, registerStatusCommand } from './cli/commands/info.
 import { registerInitCommand } from './cli/commands/init.js';
 import { registerRevokeCommand } from './cli/commands/revoke.js';
 import { registerShowCommand } from './cli/commands/show.js';
+import { registerTokenCommand } from './cli/commands/token.js';
 import { PASSPORT_VERSION } from './types/passport.js';
 
 const program = new Command();
@@ -26,7 +28,9 @@ registerInfoCommand(program);
 registerStatusCommand(program);
 registerShowCommand(program);
 registerGrantCommand(program);
+registerAuthorizeCommand(program);
 registerRevokeCommand(program);
+registerTokenCommand(program);
 registerExportCommand(program);
 registerMcpCommand(program);
 registerPluginCommand(program);

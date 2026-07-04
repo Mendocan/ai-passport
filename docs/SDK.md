@@ -63,8 +63,11 @@ Check if a passport exists without loading.
 | `export(consumer)` | Filtered context for consumer (audited) |
 | `peek(consumer)` | Read-only export (no audit) |
 | `listGrants()` | Active grants summary |
+| `authorize(client, options?)` | Issue sign-in token |
+| `exchangeToken(token)` | Exchange token for context |
+| `inspectToken(token)` | Token metadata |
 
----
+See [SIGN_IN.md](SIGN_IN.md) for the full sign-in flow.
 
 ## Example — Cursor consumer
 

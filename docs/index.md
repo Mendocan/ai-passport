@@ -29,6 +29,7 @@ ai-passport onboard cursor --yes
 | [Security](SECURITY.html) | Encryption and threat model |
 | [RFC Process](RFC.html) | Propose schema changes |
 | [Roadmap](ROADMAP.html) | Project phases |
+| [Sign in with AI Passport](SIGN_IN.html) | `authorize` + token exchange |
 | [Ecosystem](ECOSYSTEM.html) | Phase 5 vision |
 
 ## Links

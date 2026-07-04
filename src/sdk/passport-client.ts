@@ -5,8 +5,11 @@ import {
   type InitOptions,
   type InitResult,
   type PassportInfo,
+  type AuthorizeOptions,
+  type AuthorizeResult,
 } from '../core/passport-manager.js';
 import type { GrantRequest, PassportContext } from '../core/permission.js';
+import type { TokenSummary } from '../core/auth-token.js';
 
 export interface LoadOptions {
   home?: string;
@@ -100,5 +103,17 @@ export class AiPassport {
 
   listGrants(): GrantSummary[] {
     return this.manager.listActiveGrants();
+  }
+
+  async authorize(client: string, options: AuthorizeOptions = {}): Promise<AuthorizeResult> {
+    return this.manager.authorize(client, options);
+  }
+
+  exchangeToken(token: string): PassportContext {
+    return this.manager.exchangeToken(token);
+  }
+
+  inspectToken(token: string): TokenSummary {
+    return this.manager.inspectToken(token);
   }
 }
