@@ -3,7 +3,7 @@
 > **Amaç:** Projeyi fazlar (ROADMAP) ile günlük işler (bu dosya) arasında net ayırarak istikrarlı ilerlemek.  
 > Stratejik vizyon: [ROADMAP.md](ROADMAP.md) · Prensipler: [MANIFESTO.md](MANIFESTO.md)
 
-**Son güncelleme:** 2026-07-04 · **npm:** `@ai-passport-core/cli@0.1.3` · `@ai-passport-core/sdk@0.1.0` · **Görünürlük:** X + LinkedIn (aşağıya bakın)
+**Son güncelleme:** 2026-07-04 · **npm:** `@ai-passport-core/cli@0.1.4` · `@ai-passport-core/sdk@0.1.0` · **Görünürlük:** X + LinkedIn (aşağıya bakın)
 
 ---
 
@@ -163,7 +163,8 @@ Bu politika **AI Passport** ve **diğer projeler** için geçerlidir. İnsanlar 
 - [x] Cloud sync tasarım RFC (0006) — Draft
 - [x] `@ai-passport-core/sdk` workspace paketi → `packages/sdk/`
 - [x] `@ai-passport-core/sdk` npm publish → [v0.1.0](https://www.npmjs.com/package/@ai-passport-core/sdk)
-- [ ] VS Code extension paketi (ayrı repo veya monorepo)
+- [x] VS Code extension paketi → `extensions/vscode/`
+- [ ] VS Code Marketplace publish
 - [ ] **v0.2+** çıkışında X + LinkedIn duyurusu ([Görünürlük](#görünürlük--x--linkedin) checklist)
 
 ### v0.5 MVP kriterleri (çıkış kapısı)

@@ -7,6 +7,8 @@ Consumers integrate with AI Passport via CLI, SDK, or MCP. They never read `pass
 | Command | Description |
 |---------|-------------|
 | `ai-passport init` | Create encrypted passport |
+| `ai-passport onboard [consumer]` | First-time setup + MCP config hint |
+| `ai-passport readiness [--consumer] [--json]` | Readiness for consumer (VS Code extension, scripts) |
 | `ai-passport info` | Passport ID, version, providers, permissions |
 | `ai-passport grant <consumer>` | Approve scoped read access |
 | `ai-passport authorize <client>` | Issue short-lived sign-in token |

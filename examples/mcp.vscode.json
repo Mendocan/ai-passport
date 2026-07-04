@@ -1,6 +1,7 @@
 {
-  "mcpServers": {
+  "servers": {
     "ai-passport": {
+      "type": "stdio",
       "command": "ai-passport",
       "args": ["mcp", "serve", "--consumer", "vscode"]
     }

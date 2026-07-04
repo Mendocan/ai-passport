@@ -44,4 +44,28 @@ describe('readiness', () => {
 
     fs.rmSync(home, { recursive: true, force: true });
   });
+
+  it('includes VS Code mcp.json format for vscode consumer', async () => {
+    const home = fs.mkdtempSync(path.join(os.tmpdir(), 'readiness-vscode-'));
+    const permissionsDir = path.join(home, 'permissions');
+    fs.mkdirSync(permissionsDir, { recursive: true });
+    fs.writeFileSync(path.join(permissionsDir, 'grants.json'), JSON.stringify({ grants: [] }));
+
+    const manager = new PassportManager(home);
+    await manager.init({ force: true });
+    await manager.grant({ provider: 'vscode', sections: ['coding', 'projects'] }, 'VS Code');
+
+    const status = await getPassportReadiness('vscode', home);
+
+    assert.equal(status.vscode_mcp_config.servers['ai-passport'].type, 'stdio');
+    assert.deepEqual(status.vscode_mcp_config.servers['ai-passport'].args, [
+      'mcp',
+      'serve',
+      '--consumer',
+      'vscode',
+    ]);
+    assert.ok(status.next_steps.some((step) => step.includes('mcp.json') || step.includes('Configure MCP')));
+
+    fs.rmSync(home, { recursive: true, force: true });
+  });
 });

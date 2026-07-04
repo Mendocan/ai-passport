@@ -17,10 +17,22 @@ export interface PassportReadiness {
   consumer_grant: boolean;
   consumer: string;
   next_steps: string[];
+  /** Cursor / Claude Desktop style */
   mcp_config: {
     mcpServers: Record<
       string,
       {
+        command: string;
+        args: string[];
+      }
+    >;
+  };
+  /** VS Code Copilot — `.vscode/mcp.json` */
+  vscode_mcp_config: {
+    servers: Record<
+      string,
+      {
+        type: 'stdio';
         command: string;
         args: string[];
       }
@@ -32,6 +44,18 @@ function buildMcpConfig(consumer: string) {
   return {
     mcpServers: {
       'ai-passport': {
+        command: 'ai-passport',
+        args: ['mcp', 'serve', '--consumer', consumer],
+      },
+    },
+  };
+}
+
+function buildVscodeMcpConfig(consumer: string) {
+  return {
+    servers: {
+      'ai-passport': {
+        type: 'stdio' as const,
         command: 'ai-passport',
         args: ['mcp', 'serve', '--consumer', consumer],
       },
@@ -60,12 +84,21 @@ function buildNextSteps(
   }
 
   if (exists && consumerGrant) {
-    steps.push('Add the MCP config below to Cursor Settings → MCP');
-    steps.push('Restart Cursor and ask: "What languages do I prefer?"');
+    if (consumer === 'vscode') {
+      steps.push('Run `AI Passport: Configure MCP` or add `.vscode/mcp.json` (see VSCODE_SETUP.md)');
+      steps.push('Restart MCP servers in VS Code and ask: "What stack am I working with?"');
+    } else {
+      steps.push('Add the MCP config below to Cursor Settings → MCP');
+      steps.push('Restart Cursor and ask: "What languages do I prefer?"');
+    }
   }
 
   if (steps.length === 0) {
-    steps.push('Passport is ready — MCP tools should work in Cursor');
+    steps.push(
+      consumer === 'vscode'
+        ? 'Passport is ready — MCP tools should work in VS Code'
+        : 'Passport is ready — MCP tools should work in Cursor',
+    );
   }
 
   return steps;
@@ -87,6 +120,7 @@ export async function getPassportReadiness(
       consumer,
       next_steps: buildNextSteps(false, false, consumer, 'missing'),
       mcp_config: buildMcpConfig(consumer),
+      vscode_mcp_config: buildVscodeMcpConfig(consumer),
     };
   }
 
@@ -126,6 +160,7 @@ export async function getPassportReadiness(
     consumer,
     next_steps: buildNextSteps(exists, consumerGrant, consumer, effectiveKeyStorage),
     mcp_config: buildMcpConfig(consumer),
+    vscode_mcp_config: buildVscodeMcpConfig(consumer),
   };
 }
 

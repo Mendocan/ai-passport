@@ -112,8 +112,12 @@ export function registerOnboardCommand(program: Command): void {
           }
 
           console.log('');
-          console.log('--- Cursor MCP config ---');
-          console.log(JSON.stringify(readiness.mcp_config, null, 2));
+          const configLabel =
+            consumer === 'vscode' ? '--- VS Code MCP config (.vscode/mcp.json) ---' : '--- Cursor MCP config ---';
+          console.log(configLabel);
+          const configPayload =
+            consumer === 'vscode' ? readiness.vscode_mcp_config : readiness.mcp_config;
+          console.log(JSON.stringify(configPayload, null, 2));
           console.log('');
 
           if (created || granted) {

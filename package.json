@@ -1,10 +1,11 @@
 {
   "name": "@ai-passport-core/cli",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Portable user-owned identity layer for AI systems — CLI, core API, and MCP adapter",
   "type": "module",
   "workspaces": [
-    "packages/*"
+    "packages/*",
+    "extensions/*"
   ],
   "bin": {
     "ai-passport": "dist/index.js"
@@ -26,6 +27,7 @@
     "build": "tsc",
     "build:sdk": "npm run build --workspace=@ai-passport-core/sdk",
     "build:all": "npm run build && npm run build:sdk",
+    "build:vscode": "npm run compile --workspace=ai-passport",
     "clean": "node --input-type=module -e \"import fs from 'node:fs'; fs.rmSync('dist',{recursive:true,force:true})\"",
     "rebuild": "npm run clean && npm run build",
     "dev": "tsx src/index.ts",

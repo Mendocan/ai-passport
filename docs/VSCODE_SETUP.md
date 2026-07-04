@@ -1,5 +1,41 @@
 # VS Code Integration — Setup
 
+Use the **AI Passport VS Code extension** (recommended) or configure MCP manually.
+
+---
+
+## Option A — Extension (recommended)
+
+### Install CLI
+
+```bash
+npm install -g @ai-passport-core/cli
+```
+
+### Install extension
+
+1. Open VS Code → Extensions
+2. Search **AI Passport** (or install from `.vsix` after `npm run compile` in `extensions/vscode/`)
+3. Open a workspace folder
+4. Command Palette → **AI Passport: Setup Workspace**
+
+This runs `ai-passport onboard vscode`, writes `.vscode/mcp.json`, and grants the `vscode` consumer.
+
+| Command | Purpose |
+|---------|---------|
+| **AI Passport: Setup Workspace** | Full first-time setup |
+| **AI Passport: Configure MCP** | Write/merge `.vscode/mcp.json` only |
+| **AI Passport: Show Status** | Readiness + next steps |
+| **AI Passport: Open MCP Config** | Open workspace MCP file |
+
+Settings: `aiPassport.cliPath`, `aiPassport.consumer` (default `vscode`).
+
+Extension source: [`extensions/vscode/`](../extensions/vscode/)
+
+---
+
+## Option B — Manual MCP configuration
+
 Any MCP-compatible VS Code extension can consume AI Passport the same way as Cursor.
 
 ---
@@ -34,7 +70,21 @@ This grants the `vscode` consumer (sections: `coding`, `projects` per [grant-tem
 
 ## Step 2 — MCP configuration
 
-Add to your VS Code MCP settings (path varies by extension):
+Add to your VS Code MCP settings — workspace file `.vscode/mcp.json` (VS Code 1.96+):
+
+```json
+{
+  "servers": {
+    "ai-passport": {
+      "type": "stdio",
+      "command": "ai-passport",
+      "args": ["mcp", "serve", "--consumer", "vscode"]
+    }
+  }
+}
+```
+
+Legacy Cursor-style config (not used by VS Code Copilot MCP):
 
 ```json
 {
@@ -64,7 +114,13 @@ See [examples/mcp.vscode.json](../examples/mcp.vscode.json).
 
 ---
 
-## Step 3 — Verify tools
+## Step 3 — Verify
+
+CLI readiness (JSON for scripts / extension):
+
+```bash
+ai-passport readiness --consumer vscode --json
+```
 
 | Tool | Purpose |
 |------|---------|

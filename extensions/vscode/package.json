@@ -1,0 +1,82 @@
+{
+  "name": "ai-passport",
+  "displayName": "AI Passport",
+  "description": "User-owned AI identity for VS Code — MCP integration with your encrypted passport",
+  "version": "0.1.0",
+  "publisher": "mendocan",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Mendocan/ai-passport.git",
+    "directory": "extensions/vscode"
+  },
+  "homepage": "https://mendocan.github.io/ai-passport/VSCODE_SETUP.html",
+  "engines": {
+    "vscode": "^1.96.0"
+  },
+  "categories": [
+    "Other",
+    "Machine Learning"
+  ],
+  "keywords": [
+    "ai",
+    "passport",
+    "mcp",
+    "copilot",
+    "identity",
+    "open-source"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "ai-passport.setup",
+        "title": "AI Passport: Setup Workspace",
+        "category": "AI Passport"
+      },
+      {
+        "command": "ai-passport.configureMcp",
+        "title": "AI Passport: Configure MCP",
+        "category": "AI Passport"
+      },
+      {
+        "command": "ai-passport.showStatus",
+        "title": "AI Passport: Show Status",
+        "category": "AI Passport"
+      },
+      {
+        "command": "ai-passport.openMcpConfig",
+        "title": "AI Passport: Open MCP Config",
+        "category": "AI Passport"
+      }
+    ],
+    "configuration": {
+      "title": "AI Passport",
+      "properties": {
+        "aiPassport.cliPath": {
+          "type": "string",
+          "default": "ai-passport",
+          "description": "Path to the ai-passport CLI (global npm install or absolute path)."
+        },
+        "aiPassport.consumer": {
+          "type": "string",
+          "default": "vscode",
+          "description": "Consumer id used for MCP grants and export."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "vscode:prepublish": "npm run compile"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.21",
+    "@types/vscode": "^1.96.0",
+    "typescript": "^5.8.3"
+  }
+}
