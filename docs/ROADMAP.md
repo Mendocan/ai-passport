@@ -47,6 +47,8 @@ See [SDK.md](SDK.md). Low-level API remains `PassportManager` for advanced use.
 
 Future: optional separate `@ai-passport-core/sdk` npm package (same API, lighter deps).
 
+- [x] `@ai-passport-core/sdk` workspace package → `packages/sdk/` (Phase 5)
+
 ## Phase 4 — Open specification ✓
 
 Documentation over code. Companies should say: *"We support AI Passport."*

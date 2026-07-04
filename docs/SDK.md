@@ -4,6 +4,14 @@ Load and use AI Passport from any Node.js application.
 
 ## Install
 
+**Recommended for apps** (lighter dependencies):
+
+```bash
+npm install @ai-passport-core/sdk
+```
+
+**Or via the CLI package** (same API, includes CLI + MCP):
+
 ```bash
 npm install @ai-passport-core/cli
 ```
@@ -11,14 +19,31 @@ npm install @ai-passport-core/cli
 ## Quick start
 
 ```typescript
-import { Passport } from '@ai-passport-core/cli/sdk';
+import { Passport } from '@ai-passport-core/sdk';
 
 const passport = await Passport.load();
 const info = await passport.info();
 const context = await passport.export('cursor');
 ```
 
+Legacy import path (still supported):
+
+```typescript
+import { Passport } from '@ai-passport-core/cli/sdk';
+```
+
 That's it. Nobody should rewrite AI Passport — just load and use.
+
+---
+
+## Package choice
+
+| Package | Dependencies | Use when |
+|---------|--------------|----------|
+| `@ai-passport-core/sdk` | Core only (ajv, keytar) | Embedding in Node apps |
+| `@ai-passport-core/cli/sdk` | Full CLI + MCP | You already use the CLI globally |
+
+Both expose the same `Passport.load()` API.
 
 ---
 
@@ -72,7 +97,7 @@ See [SIGN_IN.md](SIGN_IN.md) for the full sign-in flow.
 ## Example — Cursor consumer
 
 ```typescript
-import { Passport } from '@ai-passport-core/cli/sdk';
+import { Passport } from '@ai-passport-core/sdk';
 
 const passport = await Passport.load();
 

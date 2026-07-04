@@ -1,0 +1,61 @@
+{
+  "name": "@ai-passport-core/sdk",
+  "version": "0.1.0",
+  "description": "Lightweight SDK for AI Passport — user-owned identity for AI apps (no CLI/MCP deps)",
+  "type": "module",
+  "main": "./dist/sdk/index.js",
+  "types": "./dist/sdk/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/sdk/index.d.ts",
+      "import": "./dist/sdk/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "scripts": {
+    "build": "tsc && node scripts/copy-schemas.mjs",
+    "clean": "node --input-type=module -e \"import fs from 'node:fs'; fs.rmSync('dist',{recursive:true,force:true}); fs.rmSync('schemas',{recursive:true,force:true})\"",
+    "rebuild": "npm run clean && npm run build",
+    "prepublishOnly": "npm run rebuild",
+    "prepack": "npm run rebuild",
+    "typecheck": "tsc --noEmit"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "keywords": [
+    "ai",
+    "identity",
+    "passport",
+    "sdk",
+    "encryption",
+    "developer-tools"
+  ],
+  "author": "Mendocan",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mendocan/ai-passport.git",
+    "directory": "packages/sdk"
+  },
+  "homepage": "https://mendocan.github.io/ai-passport/SDK.html",
+  "bugs": {
+    "url": "https://github.com/Mendocan/ai-passport/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "ajv": "^8.17.1",
+    "ajv-formats": "^3.0.1",
+    "keytar": "^7.9.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.21",
+    "typescript": "^5.8.3"
+  },
+  "files": [
+    "dist",
+    "schemas"
+  ]
+}

@@ -161,8 +161,9 @@ Bu politika **AI Passport** ve **diğer projeler** için geçerlidir. İnsanlar 
 ### Sonra — Phase 5
 
 - [x] Cloud sync tasarım RFC (0006) — Draft
+- [x] `@ai-passport-core/sdk` workspace paketi → `packages/sdk/`
+- [ ] `@ai-passport-core/sdk` npm publish (v0.1.0)
 - [ ] VS Code extension paketi (ayrı repo veya monorepo)
-- [ ] `@ai-passport-core/sdk` ayrı npm paketi (hafif bağımlılık)
 - [ ] **v0.2+** çıkışında X + LinkedIn duyurusu ([Görünürlük](#görünürlük--x--linkedin) checklist)
 
 ### v0.5 MVP kriterleri (çıkış kapısı)
