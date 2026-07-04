@@ -27,7 +27,7 @@ Without global install: `npx @ai-passport-core/cli init`
 
 ![AI Passport — Cursor reads your coding profile](docs/assets/demo.gif)
 
-One command onboarding, then Cursor adapts to your stack. See [docs/DEMO.md](docs/DEMO.md).
+*Demo GIF: target 20–30s with AI answer visible. Current clip ~14s — see [docs/DEMO.md](docs/DEMO.md) to re-record.*
 
 ---
 
@@ -136,13 +136,13 @@ const context = await manager.export('cursor');
 
 ---
 
-## Demo (30 seconds)
+## Demo (20–30 sec GIF)
 
 ```powershell
 .\scripts\demo.ps1
 ```
 
-See [docs/DEMO.md](docs/DEMO.md) · Record a GIF for README when ready.
+See [docs/DEMO.md](docs/DEMO.md) · Record a new GIF with the **AI answer** on screen (~25s).
 
 ---
 

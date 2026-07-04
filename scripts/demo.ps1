@@ -1,4 +1,4 @@
-# AI Passport - 30 second demo helper
+# AI Passport - demo recording helper (see docs/DEMO.md)
 # Run from repo root: .\scripts\demo.ps1
 
 $ErrorActionPreference = "Stop"

@@ -1,63 +1,89 @@
-# AI Passport — 30 Second Demo
+# AI Passport — Demo GIF
 
-The "wow moment": passport exists → Cursor reads it → AI knows your stack.
+The "wow moment": Cursor reads your passport and answers from your real stack — without you re-explaining.
+
+**Current file:** [`assets/demo.gif`](assets/demo.gif) (~14s) — shows setup questions only.  
+**Target:** 20–30s including the **AI answer** (TypeScript / project from passport).
 
 ---
 
 ## Before recording
 
-- Node.js 20+
-- [Cursor](https://cursor.com) installed
-- Terminal + Cursor visible in recording
+- `ai-passport onboard cursor --path . --yes` already done
+- MCP **ai-passport** green in Cursor Settings
+- New empty chat tab (not an old thread)
+- OBS or ScreenToGif ready
 
 ---
 
-## Demo script (Windows)
+## Recommended recording (25 seconds)
 
-From repo root:
+Record **one continuous take**. Do not include terminal onboarding — passport is already set up.
 
-```powershell
-.\scripts\demo.ps1
-```
+| Time | On screen | Action |
+|------|-----------|--------|
+| 0:00–0:03 | Cursor chat (empty) | Optional: flash Settings → MCP → ai-passport ON |
+| 0:03–0:08 | Chat input | Type: `What languages and frameworks do I prefer?` → Enter |
+| 0:08–0:22 | Chat response | **Wait for full AI answer** (TypeScript, frameworks…) |
+| 0:22–0:25 | Same | Hold 2s on answer so viewers can read |
 
-Or manually:
+**Pass:** AI mentions your passport / coding profile — not generic advice.
 
-```powershell
-npm install -g @ai-passport-core/cli@latest
-ai-passport onboard cursor --path . --yes
-```
-
-Then open Cursor → new chat → ask:
-
-1. *"What languages and frameworks do I prefer?"*
-2. *"What project am I working on?"*
-
-**Pass:** Cursor answers from passport without you re-explaining.
+**Fail:** Only the question visible, no answer → re-record.
 
 ---
 
-## Recording checklist
+## Quick version (15 seconds)
 
-| Step | On screen |
+If you want a short GIF:
+
+| Time | On screen |
 |------|-----------|
-| 0:00 | Terminal: `ai-passport onboard cursor --path . --yes` |
-| 0:10 | Output: passport ID + MCP config |
-| 0:15 | Switch to Cursor — MCP tools visible |
-| 0:20 | Chat: "What languages do I prefer?" |
-| 0:28 | AI cites TypeScript / your coding profile |
+| 0:00–0:05 | Question already typed → press Enter |
+| 0:05–0:14 | Full AI answer visible |
 
-Target length: **30 seconds**.
+Minimum **10 seconds** of AI response on screen.
 
 ---
 
-## Where to publish
+## Export settings (ezgif)
 
-- README demo section (GIF or link to video)
-- GitHub Pages: [index.md](index.md)
-- GitHub Release assets (optional)
+1. Upload OBS **MP4** (not URL)
+2. Trim start/end in ezgif **Cut video**
+3. Convert to GIF:
+   - Width: **900px**
+   - FPS: **12**
+   - Max colors: **128** (smaller file)
+4. Target file size: **< 2 MB** if possible, max **5 MB**
+5. Save as: `docs/assets/demo.gif` (overwrite)
 
 ---
 
-## Troubleshooting during demo
+## Replace in repo
+
+```powershell
+# After saving new GIF:
+cd c:\Ai_Passport
+git add docs/assets/demo.gif
+git commit -m "docs: update demo GIF with AI response"
+git push origin main
+```
+
+README and GitHub Pages pick up the new file automatically.
+
+---
+
+## Optional: two-question take (~30s)
+
+1. `What languages and frameworks do I prefer?` → wait for answer (~12s)
+2. `What project am I working on?` → wait for answer (~12s)
+
+Trim to best 25–30s in ezgif if too long.
+
+---
+
+## Troubleshooting
 
 See [CURSOR_SETUP.md](CURSOR_SETUP.md).
+
+If AI does not use passport: new chat, confirm MCP tools, ask *"Use get_passport_context and tell me my coding profile."*

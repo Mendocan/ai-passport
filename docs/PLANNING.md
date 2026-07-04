@@ -42,7 +42,7 @@ Gerçek değer **standartta** — sadece CLI'da değil.
 | 2 | **SemVer'e sıkı bağlılık** | ROADMAP'te yoktu; bu dosyaya eklendi. | Bu dosyada ✓ |
 | 3 | **Testler** — şifreleme, bütünlük, yetki, şema, geriye uyumluluk | Kimlik katmanı için şart. Eksikler var. | Kısmen ✓ |
 | 4 | **RFC mantığı** — `/docs/rfcs/0001-...` | RFC 0001–0005 Accepted | ✓ |
-| 5 | **30 sn demo** — init → Cursor → "Welcome back" | Phase 2 wow test var; kayıtlı demo/video yok. | Kısmen ✓ |
+| 5 | **Demo GIF** — Cursor + AI answer | v1 ~14s (questions only); v2 hedef 25s | Kısmen ✓ |
 
 **Sonuç:** Öneriler **değerlendirilmeli ve uygulanmalı** — çoğu zaten yarı yolda; eksikler bu dosyada takip edilecek.
 
@@ -108,8 +108,8 @@ ai-passport onboard cursor --path . --yes
 | Görev | Durum |
 |-------|--------|
 | Adım adım rehber | ✓ [CURSOR_SETUP.md](CURSOR_SETUP.md) |
-| Tek komutlu demo script | ✓ `scripts/demo.ps1`, `scripts/demo.sh` → [DEMO.md](DEMO.md) |
-| Ekran kaydı / GIF (README veya site) | ✓ [docs/assets/demo.gif](assets/demo.gif) |
+| Demo script | ✓ `scripts/demo.ps1` → [DEMO.md](DEMO.md) |
+| Demo GIF v2 (AI cevaplı, 20–30s) | ☐ `docs/assets/demo.gif` yeniden kayıt |
 
 ---
 
@@ -122,7 +122,8 @@ ai-passport onboard cursor --path . --yes
 - [x] RFC **0002–0005** Accepted
 - [x] Test: schema validation + backward compat fixture
 - [x] Test: encryption integrity + permission field filters
-- [x] 30 sn demo GIF → `docs/assets/demo.gif`
+- [ ] Demo GIF v2 (20–30s, AI cevabı dahil) → [DEMO.md](DEMO.md)
+- [x] Demo GIF v1 → `docs/assets/demo.gif` (14s, yenilenecek)
 
 ### Sonra — Phase 5
 
