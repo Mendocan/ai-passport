@@ -163,7 +163,7 @@ npm test
 ## Status
 
 **Phase 4 complete** — Open spec index, compatibility checklist, RFC process.  
-**Phase 5 in progress** — Sign in with AI Passport implemented (`authorize`, `token exchange`).
+**Phase 5 in progress** — VS Code extension on [Marketplace](https://marketplace.visualstudio.com/items?itemName=mendocan.ai-passport); cloud sync file provider (v0.1.5).
 
 ---
 

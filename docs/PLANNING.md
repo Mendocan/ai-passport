@@ -164,9 +164,9 @@ Bu politika **AI Passport** ve **diğer projeler** için geçerlidir. İnsanlar 
 - [x] Cloud sync prototype CLI (`sync push/pull/status`) — v0.1.5
 - [x] `@ai-passport-core/sdk` workspace paketi → `packages/sdk/`
 - [x] `@ai-passport-core/sdk` npm publish → [v0.1.0](https://www.npmjs.com/package/@ai-passport-core/sdk)
-- [x] `@ai-passport-core/cli` npm publish → [v0.1.4](https://www.npmjs.com/package/@ai-passport-core/cli)
+- [x] `@ai-passport-core/cli` npm publish → [v0.1.5](https://www.npmjs.com/package/@ai-passport-core/cli) (sync)
 - [x] VS Code extension paketi → `extensions/vscode/`
-- [ ] VS Code Marketplace publish → [VSCODE_MARKETPLACE.md](VSCODE_MARKETPLACE.md)
+- [x] VS Code Marketplace publish → [mendocan.ai-passport](https://marketplace.visualstudio.com/items?itemName=mendocan.ai-passport)
 - [ ] **v0.2+** çıkışında X + LinkedIn duyurusu ([Görünürlük](#görünürlük--x--linkedin) checklist)
 
 ### v0.5 MVP kriterleri (çıkış kapısı)
@@ -196,6 +196,7 @@ Bu politika **AI Passport** ve **diğer projeler** için geçerlidir. İnsanlar 
 | 0.1.3 | Sign in — `authorize`, `token exchange` |
 | 0.1.4 | `readiness` CLI, VS Code MCP format, extension scaffold |
 | 0.1.5 | Cloud sync prototype — `sync push/pull` (RFC 0006) |
+| ext 0.1.0 | VS Code extension — [Marketplace](https://marketplace.visualstudio.com/items?itemName=mendocan.ai-passport) |
 
 Detay: [ROADMAP.md](ROADMAP.md) · Release notları: [releases/](releases/)
 
@@ -204,6 +205,7 @@ Detay: [ROADMAP.md](ROADMAP.md) · Release notları: [releases/](releases/)
 ## Dosya ilişkileri
 
 ```
+FOUNDING.md      → Kuruluş notu — fikir, problem, taviz edilmeyen ilkeler
 MANIFESTO.md     → Neden / prensipler (değişmez)
 VISION.md        → Anayasa
 ROADMAP.md       → Fazlar (stratejik)

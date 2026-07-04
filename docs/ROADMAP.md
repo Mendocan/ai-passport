@@ -66,4 +66,4 @@ Documentation over code. Companies should say: *"We support AI Passport."*
 - [x] Sign in with AI Passport (implementation) → `authorize`, `token exchange`
 - [ ] Cloud sync (optional, E2E encrypted) — file provider ✓ v0.1.5; HTTP provider TBD
 - [x] VS Code extension package → [`extensions/vscode/`](../extensions/vscode/)
-- [ ] VS Code extension Marketplace publish
+- [x] VS Code extension Marketplace publish → [mendocan.ai-passport](https://marketplace.visualstudio.com/items?itemName=mendocan.ai-passport)
