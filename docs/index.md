@@ -18,8 +18,8 @@ ai-passport onboard cursor --yes
 
 ## Documentation
 
-| | |
-|---|---|
+| Document | Description |
+|----------|-------------|
 | [Open Specification](SPECIFICATION.html) | Public spec index for implementers |
 | [Compatibility Checklist](COMPATIBILITY.html) | "Supports AI Passport" criteria |
 | [SDK Reference](SDK.html) | `Passport.load()` API |

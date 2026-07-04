@@ -44,7 +44,7 @@ Web and desktop apps need a flow similar to OAuth without a central identity ser
       "client_id": "my-web-app",
       "grant_id": "grant_my-web-app_abc",
       "passport_id": "aip_...",
-      "context": { "... Passport Context ..." },
+      "context": "<Passport Context object>",
       "issued_at": "ISO-8601",
       "expires_at": "ISO-8601",
       "one_time": true,

@@ -11,12 +11,13 @@ Public documentation at **https://mendocan.github.io/ai-passport/**
 
 ## Local preview (optional)
 
-Requires Ruby + Bundler:
+GitHub Pages builds automatically on push to `main` (`/docs` folder). No local Gemfile required.
+
+To preview locally, install Ruby + Jekyll and run from `docs/`:
 
 ```bash
-cd docs
-bundle install
-bundle exec jekyll serve
+gem install github-pages
+jekyll serve --baseurl /ai-passport
 ```
 
 Open http://localhost:4000/ai-passport/

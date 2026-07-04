@@ -11,7 +11,7 @@
 
 This RFC defines the canonical **plaintext shape** of an AI Passport document before encryption. It is the reference for readers, writers, validators, and external implementers.
 
-Machine-readable schema: [`schemas/passport.schema.json`](../../schemas/passport.schema.json)
+Machine-readable schema: [`passport.schema.json`](https://github.com/Mendocan/ai-passport/blob/main/schemas/passport.schema.json)
 
 ---
 
@@ -98,8 +98,8 @@ Future migrations must include:
 
 ## Compatibility
 
-- Example document: [`schemas/examples/passport.example.json`](../../schemas/examples/passport.example.json)
-- Minimal fixture: [`schemas/fixtures/passport.v1.0.0.minimal.json`](../../schemas/fixtures/passport.v1.0.0.minimal.json)
+- Example document: [`passport.example.json`](https://github.com/Mendocan/ai-passport/blob/main/schemas/examples/passport.example.json)
+- Minimal fixture: [`passport.v1.0.0.minimal.json`](https://github.com/Mendocan/ai-passport/blob/main/schemas/fixtures/passport.v1.0.0.minimal.json)
 - Validator: `validatePassport()` in core
 - Checklist: [COMPATIBILITY.md](../COMPATIBILITY.md)
 
