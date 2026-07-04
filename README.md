@@ -25,9 +25,9 @@ Without global install: `npx @ai-passport-core/cli init`
 
 ## Demo
 
-![AI Passport — Cursor reads your coding profile](docs/assets/demo.gif)
+![AI Passport — Cursor reads your coding profile via MCP](docs/assets/demo.gif)
 
-*Demo GIF: target 20–30s with AI answer visible. Current clip ~14s — see [docs/DEMO.md](docs/DEMO.md) to re-record.*
+*~21s — question, `get_passport_context`, and TypeScript/Node.js answer from your passport.*
 
 ---
 

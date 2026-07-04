@@ -16,9 +16,7 @@ npm install -g @ai-passport-core/cli
 ai-passport onboard cursor --yes
 ```
 
-![Demo — Cursor + AI Passport](assets/demo.gif)
-
-*Target: 20–30s with AI response. [Re-record guide](DEMO.html)*
+![Demo — Cursor + AI Passport (~21s)](assets/demo.gif)
 
 ## Documentation
 

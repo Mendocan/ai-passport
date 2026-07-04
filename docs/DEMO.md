@@ -2,8 +2,7 @@
 
 The "wow moment": Cursor reads your passport and answers from your real stack — without you re-explaining.
 
-**Current file:** [`assets/demo.gif`](assets/demo.gif) (~14s) — shows setup questions only.  
-**Target:** 20–30s including the **AI answer** (TypeScript / project from passport).
+**Current file:** [`assets/demo.gif`](assets/demo.gif) (~21s) — question, MCP `get_passport_context`, and full AI answer.
 
 ---
 
