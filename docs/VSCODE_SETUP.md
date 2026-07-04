@@ -32,6 +32,8 @@ Settings: `aiPassport.cliPath`, `aiPassport.consumer` (default `vscode`).
 
 Extension source: [`extensions/vscode/`](../extensions/vscode/)
 
+Marketplace publish guide: [VSCODE_MARKETPLACE.md](VSCODE_MARKETPLACE.md)
+
 ---
 
 ## Option B — Manual MCP configuration

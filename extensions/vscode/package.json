@@ -11,6 +11,15 @@
     "directory": "extensions/vscode"
   },
   "homepage": "https://mendocan.github.io/ai-passport/VSCODE_SETUP.html",
+  "bugs": {
+    "url": "https://github.com/Mendocan/ai-passport/issues"
+  },
+  "qna": "marketplace",
+  "preview": false,
+  "galleryBanner": {
+    "color": "#1a1a2e",
+    "theme": "dark"
+  },
   "engines": {
     "vscode": "^1.96.0"
   },
@@ -72,11 +81,14 @@
   "scripts": {
     "compile": "tsc -p ./",
     "watch": "tsc -watch -p ./",
-    "vscode:prepublish": "npm run compile"
+    "vscode:prepublish": "npm run compile",
+    "package": "vsce package",
+    "publish:marketplace": "vsce publish"
   },
   "devDependencies": {
     "@types/node": "^22.15.21",
     "@types/vscode": "^1.96.0",
+    "@vscode/vsce": "^3.7.0",
     "typescript": "^5.8.3"
   }
 }

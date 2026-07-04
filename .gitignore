@@ -1,6 +1,8 @@
 node_modules/
 dist/
 packages/sdk/schemas/
+extensions/vscode/node_modules/
+extensions/vscode/*.vsix
 *.log
 .DS_Store
 .env

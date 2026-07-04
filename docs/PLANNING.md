@@ -163,8 +163,9 @@ Bu politika **AI Passport** ve **diğer projeler** için geçerlidir. İnsanlar 
 - [x] Cloud sync tasarım RFC (0006) — Draft
 - [x] `@ai-passport-core/sdk` workspace paketi → `packages/sdk/`
 - [x] `@ai-passport-core/sdk` npm publish → [v0.1.0](https://www.npmjs.com/package/@ai-passport-core/sdk)
+- [x] `@ai-passport-core/cli` npm publish → [v0.1.4](https://www.npmjs.com/package/@ai-passport-core/cli)
 - [x] VS Code extension paketi → `extensions/vscode/`
-- [ ] VS Code Marketplace publish
+- [ ] VS Code Marketplace publish → [VSCODE_MARKETPLACE.md](VSCODE_MARKETPLACE.md)
 - [ ] **v0.2+** çıkışında X + LinkedIn duyurusu ([Görünürlük](#görünürlük--x--linkedin) checklist)
 
 ### v0.5 MVP kriterleri (çıkış kapısı)
@@ -192,6 +193,7 @@ Bu politika **AI Passport** ve **diğer projeler** için geçerlidir. İnsanlar 
 | 0.1.0-sdk | `@ai-passport-core/sdk` standalone npm paketi |
 | 0.1.2 | `onboard`, open spec, GitHub Pages |
 | 0.1.3 | Sign in — `authorize`, `token exchange` |
+| 0.1.4 | `readiness` CLI, VS Code MCP format, extension scaffold |
 
 Detay: [ROADMAP.md](ROADMAP.md) · Release notları: [releases/](releases/)
 
