@@ -16,6 +16,8 @@ npm install -g @ai-passport-core/cli
 ai-passport onboard cursor --yes
 ```
 
+![Demo — Cursor + AI Passport wow moment](assets/demo.gif)
+
 ## Documentation
 
 | Document | Description |

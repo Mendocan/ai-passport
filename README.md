@@ -23,6 +23,12 @@ ai-passport export cursor
 
 Without global install: `npx @ai-passport-core/cli init`
 
+## Demo
+
+![AI Passport — Cursor reads your coding profile](docs/assets/demo.gif)
+
+One command onboarding, then Cursor adapts to your stack. See [docs/DEMO.md](docs/DEMO.md).
+
 ---
 
 ## Mission

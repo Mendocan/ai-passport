@@ -109,7 +109,7 @@ ai-passport onboard cursor --path . --yes
 |-------|--------|
 | Adım adım rehber | ✓ [CURSOR_SETUP.md](CURSOR_SETUP.md) |
 | Tek komutlu demo script | ✓ `scripts/demo.ps1`, `scripts/demo.sh` → [DEMO.md](DEMO.md) |
-| Ekran kaydı / GIF (README veya site) | ☐ — sizin kaydınız |
+| Ekran kaydı / GIF (README veya site) | ✓ [docs/assets/demo.gif](assets/demo.gif) |
 
 ---
 
@@ -122,7 +122,7 @@ ai-passport onboard cursor --path . --yes
 - [x] RFC **0002–0005** Accepted
 - [x] Test: schema validation + backward compat fixture
 - [x] Test: encryption integrity + permission field filters
-- [ ] 30 sn demo videosu veya GIF → [DEMO.md](DEMO.md) rehberi hazır
+- [x] 30 sn demo GIF → `docs/assets/demo.gif`
 
 ### Sonra — Phase 5
 
