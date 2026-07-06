@@ -3,7 +3,7 @@
 > **Amaç:** Projeyi fazlar (ROADMAP) ile günlük işler (bu dosya) arasında net ayırarak istikrarlı ilerlemek.  
 > Stratejik vizyon: [ROADMAP.md](ROADMAP.md) · Prensipler: [MANIFESTO.md](MANIFESTO.md)
 
-**Son güncelleme:** 2026-07-06 · **npm:** `@ai-passport-core/cli@0.2.0` (publish pending) · `@ai-passport-core/sdk@0.1.0` · **RFC 0007** Accepted
+**Son güncelleme:** 2026-07-06 · **npm:** `@ai-passport-core/cli@0.2.1` · `@ai-passport-core/sdk@0.1.0` · **RFC 0007** Accepted
 
 ---
 
@@ -26,7 +26,8 @@ Gerçek değer **standartta** — sadece CLI'da değil.
 
 | Sürüm | Anlam | Hedef |
 |-------|--------|--------|
-| **v0.1.x** | Deneysel — API değişebilir | **Şu an** (0.1.3) |
+| **v0.1.x** | Deneysel — API değişebilir | Tamamlandı |
+| **v0.2.x** | Memory prototype — API evrilebilir | **Şu an** (0.2.1) |
 | **v0.5.x** | MVP — temel API donmuş, breaking nadir | Cursor + SDK + Sign-in stabil |
 | **v1.0.0** | İlk stabil standart — "We support AI Passport v1" | Spec + uyumluluk checklist kilitli |
 
@@ -140,50 +141,42 @@ Bu politika **AI Passport** ve **diğer projeler** için geçerlidir. İnsanlar 
 
 ### Checklist (sürüm çıkışında)
 
-- [ ] Release notu / CHANGELOG hazır
-- [ ] GitHub Release + npm publish tamam
-- [ ] X post — 1–2 cümle + link
-- [ ] LinkedIn post — 3–5 cümle + görsel + link
-- [ ] Spec site / demo güncelse linkte belirt
+- [x] Release notu / CHANGELOG hazır — [v0.2.0](releases/v0.2.0.md), [v0.2.1](releases/v0.2.1.md)
+- [x] GitHub Release + npm publish tamam — [v0.2.0](https://github.com/Mendocan/ai-passport/releases/tag/v0.2.0), [v0.2.1](https://github.com/Mendocan/ai-passport/releases/tag/v0.2.1)
+- [x] X post — v0.2 duyurusu (EN/TR hazır)
+- [x] LinkedIn post + profil projesi — v0.2 duyurusu, GitHub medya
+- [x] Spec site / demo güncelse linkte belirt
 
 ---
 
 ## Aktif yapılacaklar (öncelik sırası)
 
-### Şimdi — istikrar & görünürlük
+### Şimdi — doğrulama & v0.3 yönü
 
-- [x] GitHub Release **v0.1.5** → [v0.1.5 — Cloud sync prototype](https://github.com/Mendocan/ai-passport/releases/tag/v0.1.5)
-- [x] İlk RFC: **0001-passport-format.md**
-- [x] RFC **0002–0005** Accepted
-- [x] Test: schema validation + backward compat fixture
-- [x] Test: encryption integrity + permission field filters
-- [x] Demo GIF (~21s) → `docs/assets/demo.gif`
+- [x] CLI `@0.2.1` global kurulum — `ai-passport --version` → `0.2.1`
+- [x] Memory canlı test — `memory store` + `export cursor` → `memory.excerpt` ✓
+- [ ] Cursor MCP yeniden başlat → `get_memory_context` tool Cursor'da sor
+- [ ] v0.3 yönü seç: **memory derinleştirme** (confidence/graph) veya **RFC 0006 HTTP sync**
+- [ ] Test boşlukları: keychain fallback, corrupt meta, MCP tool contract smoke test
+- [ ] `@ai-passport-core/sdk` npm — CLI ile hizala (≥0.2.x)
 
-### Sonra — Phase 5
+### Tamamlandı — v0.2 ship (2026-07-06)
 
-- [x] Cloud sync tasarım RFC (0006) — Draft
-- [x] Cloud sync prototype CLI (`sync push/pull/status`) — v0.1.5
-- [x] `@ai-passport-core/sdk` workspace paketi → `packages/sdk/`
-- [x] `@ai-passport-core/sdk` npm publish → [v0.1.0](https://www.npmjs.com/package/@ai-passport-core/sdk)
-- [x] `@ai-passport-core/cli` npm publish → [v0.1.5](https://www.npmjs.com/package/@ai-passport-core/cli) (sync)
-- [x] VS Code extension paketi → `extensions/vscode/`
-- [x] VS Code Marketplace publish → [mendocan.ai-passport](https://marketplace.visualstudio.com/items?itemName=mendocan.ai-passport)
-- [ ] **v0.2+** çıkışında X + LinkedIn duyurusu ([Görünürlük](#görünürlük--x--linkedin) checklist)
+- [x] `@ai-passport-core/cli` npm → [v0.2.0](https://www.npmjs.com/package/@ai-passport-core/cli), [v0.2.1](https://www.npmjs.com/package/@ai-passport-core/cli) (version display fix)
+- [x] GitHub Release → [v0.2.0](https://github.com/Mendocan/ai-passport/releases/tag/v0.2.0), [v0.2.1](https://github.com/Mendocan/ai-passport/releases/tag/v0.2.1)
+- [x] README status güncellendi
+- [x] X + LinkedIn duyurusu + LinkedIn profil projesi
+- [ ] Mission/tagline güncellemesi — positioning review (ertelenebilir)
 
-### v2 — Memory Provider (RFC 0007)
+### v2 — Memory Provider (RFC 0007) ✓ prototype
 
 > Gevşek bağlı mimari: Passport = kimlik + izin + context assembly; Memory = provider.  
 > Vizyon: [research/vision-v2-memory.md](research/vision-v2-memory.md)
 
-- [x] RFC 0007 Draft — Memory Provider API
-- [x] Vision v2 research doc
-- [x] `feature/memory-provider` branch — interface + grant `memory` field
-- [x] v0.2.0 prototype — `local-vault` stub, `memory init/status/store`, grant `--memory`
-- [x] MCP memory excerpt — `get_passport_context` enrichment + dedicated `get_memory_context` tool
-- [x] RFC 0007 Accepted — Memory Provider API
-- [ ] Mission/tagline güncellemesi — v0.2 ship + positioning review
-- [ ] `@ai-passport-core/cli` npm publish → v0.2.0
-- [ ] GitHub Release **v0.2.0**
+- [x] RFC 0007 Draft → Accepted
+- [x] `local-vault` stub, `memory init/status/store`, grant `--memory`
+- [x] MCP — `get_passport_context` enrichment + `get_memory_context`
+- [ ] v0.3+ — confidence metadata, knowledge graph
 
 ### v0.5 MVP kriterleri (çıkış kapısı)
 
@@ -213,6 +206,7 @@ Bu politika **AI Passport** ve **diğer projeler** için geçerlidir. İnsanlar 
 | 0.1.4 | `readiness` CLI, VS Code MCP format, extension scaffold |
 | 0.1.5 | Cloud sync prototype — `sync push/pull` (RFC 0006) |
 | 0.2.0 | Memory Provider API — `memory init/store`, grant `--memory`, MCP `get_memory_context` (RFC 0007) |
+| 0.2.1 | CLI `--version` → npm sürümü; `info` → Schema etiketi |
 | ext 0.1.0 | VS Code extension — [Marketplace](https://marketplace.visualstudio.com/items?itemName=mendocan.ai-passport) |
 
 Detay: [ROADMAP.md](ROADMAP.md) · Release notları: [releases/](releases/)
