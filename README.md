@@ -90,6 +90,7 @@ MCP config (after global install):
 | `ai-passport memory init` | Initialize local memory vault |
 | `ai-passport memory status` | Memory provider status |
 | `ai-passport memory store <ns> <text>` | Store a scoped memory record |
+| `ai-passport memory query [consumer]` | Query grant-scoped memory (CLI) |
 | `ai-passport grant <consumer> --memory <ns>` | Grant with memory namespaces |
 | `ai-passport mcp serve` | Start MCP server (stdio) |
 

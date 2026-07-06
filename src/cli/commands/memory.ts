@@ -1,6 +1,7 @@
 import { Command } from 'commander';
 
 import { MemoryManager } from '../../core/memory/manager.js';
+import { PassportManager } from '../../core/passport-manager.js';
 import { parseMemoryNamespaces } from '../../core/memory/service.js';
 import { handleCliError } from '../util.js';
 
@@ -104,6 +105,61 @@ export function registerMemoryCommand(program: Command): void {
 
           console.log(`✓ Stored ${ref.id}`);
           console.log(`  Namespace: ${ref.namespace}`);
+        } catch (error) {
+          handleCliError(error);
+        }
+      },
+    );
+
+  memory
+    .command('query')
+    .description('Query memory for a consumer (grant-scoped; same as MCP get_memory_context)')
+    .argument('[consumer]', 'Consumer id', 'cursor')
+    .option('--namespaces <list>', 'Comma-separated namespaces (defaults to all granted)')
+    .option('--home <path>', 'Custom passport home directory')
+    .option('--json', 'Output JSON')
+    .action(
+      async (
+        consumer: string,
+        options: { namespaces?: string; home?: string; json?: boolean },
+      ) => {
+        try {
+          const passportManager = new PassportManager(options.home);
+          if (!passportManager.exists()) {
+            throw new Error('Passport not found. Run `ai-passport init` first.');
+          }
+
+          const namespaces = options.namespaces
+            ? parseMemoryNamespaces(options.namespaces)
+            : undefined;
+          const excerpt = await passportManager.queryMemory(consumer, namespaces);
+
+          if (options.json) {
+            console.log(JSON.stringify(excerpt, null, 2));
+            return;
+          }
+
+          if (excerpt.records.length === 0) {
+            console.log(`No memory records for "${consumer}" in granted namespaces.`);
+            return;
+          }
+
+          console.log(`Consumer:  ${consumer}`);
+          console.log(`Records:   ${excerpt.records.length}${excerpt.truncated ? ' (truncated)' : ''}`);
+          console.log('');
+
+          for (const record of excerpt.records) {
+            const content =
+              typeof record.content === 'string'
+                ? record.content
+                : JSON.stringify(record.content);
+            console.log(`• ${record.namespace} [${record.id}]`);
+            console.log(`  ${content}`);
+            if (record.confidence !== undefined) {
+              console.log(`  confidence: ${record.confidence}`);
+            }
+            console.log('');
+          }
         } catch (error) {
           handleCliError(error);
         }
