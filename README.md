@@ -163,7 +163,7 @@ npm test
 ## Status
 
 **Phase 4 complete** — Open spec index, compatibility checklist, RFC process.  
-**Phase 5 in progress** — VS Code extension on [Marketplace](https://marketplace.visualstudio.com/items?itemName=mendocan.ai-passport); cloud sync file provider (v0.1.5).
+**Phase 5 complete** · **Phase 6 (memory)** — v0.2.0 RFC 0007 Accepted; CLI `@0.2.0` publish pending.
 
 ---
 

@@ -74,6 +74,6 @@ Documentation over code. Companies should say: *"We support AI Passport."*
 
 - [x] Vision expansion research → [vision-v2-memory.md](research/vision-v2-memory.md)
 - [x] RFC 0007 Draft — Memory Provider API
-- [ ] v0.2 prototype — local vault provider + grant extension
+- [x] v0.2 prototype — local vault provider + grant extension + MCP memory tools
 - [ ] Confidence metadata & knowledge graph — v0.3+
 - [ ] Agent handshake — RFC 0008 candidate

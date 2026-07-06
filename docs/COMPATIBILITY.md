@@ -21,6 +21,7 @@ Use this checklist to claim **"Supports AI Passport"** in docs, marketing, or in
 - [ ] **Status discovery** — Use `get_passport_status` (MCP) or `ai-passport onboard` for first-time setup
 - [ ] **Grant templates** — Align with [config/grant-templates.json](../config/grant-templates.json) for your consumer id
 - [ ] **Access logging** — Respect audited export (`export` / `get_passport_context`) vs peek (`peek` / `get_active_project`)
+- [ ] **Memory (RFC 0007)** — If using `get_memory_context` or `memory` in export: honor namespace grants; ignore unknown `memory` block if not supported
 - [ ] **Error messages** — Surface actionable errors ("Run `ai-passport grant <consumer>`")
 
 ---

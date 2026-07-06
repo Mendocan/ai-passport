@@ -94,6 +94,6 @@ After acceptance:
 | [0004](rfcs/0004-encryption.md) | Encryption & key storage | Accepted |
 | [0005](rfcs/0005-sign-in-token.md) | Sign-in token format | Accepted |
 | [0006](rfcs/0006-cloud-sync.md) | Cloud sync (E2E encrypted) | Draft |
-| [0007](rfcs/0007-memory-provider.md) | Memory Provider API (v2) | Draft |
+| [0007](rfcs/0007-memory-provider.md) | Memory Provider API (v2) | Accepted |
 
 Submit the first RFC when proposing schema v1.1.0 or new standard sections.

@@ -3,7 +3,7 @@
 > **Amaç:** Projeyi fazlar (ROADMAP) ile günlük işler (bu dosya) arasında net ayırarak istikrarlı ilerlemek.  
 > Stratejik vizyon: [ROADMAP.md](ROADMAP.md) · Prensipler: [MANIFESTO.md](MANIFESTO.md)
 
-**Son güncelleme:** 2026-07-06 · **npm:** `@ai-passport-core/cli@0.1.5` · `@ai-passport-core/sdk@0.1.0` · **v2:** RFC 0007 Draft
+**Son güncelleme:** 2026-07-06 · **npm:** `@ai-passport-core/cli@0.2.0` (publish pending) · `@ai-passport-core/sdk@0.1.0` · **RFC 0007** Accepted
 
 ---
 
@@ -90,7 +90,7 @@ Internal/refactor serbest; public export ve CLI komut isimleri dikkatli değişt
 | 0004 | Encryption & key storage | ✓ Accepted |
 | 0005 | Sign in token format | ✓ Accepted |
 | 0006 | Cloud sync (E2E encrypted) | Draft — Phase 5 |
-| 0007 | Memory Provider API (v2) | Draft — [RFC](../rfcs/0007-memory-provider.md) · [vision](../research/vision-v2-memory.md) |
+| 0007 | Memory Provider API (v2) | ✓ Accepted |
 
 Süreç: [RFC.md](RFC.md)
 
@@ -180,7 +180,10 @@ Bu politika **AI Passport** ve **diğer projeler** için geçerlidir. İnsanlar 
 - [x] `feature/memory-provider` branch — interface + grant `memory` field
 - [x] v0.2.0 prototype — `local-vault` stub, `memory init/status/store`, grant `--memory`
 - [x] MCP memory excerpt — `get_passport_context` enrichment + dedicated `get_memory_context` tool
-- [ ] Mission/tagline güncellemesi — RFC Accepted + v0.2 ship sonrası
+- [x] RFC 0007 Accepted — Memory Provider API
+- [ ] Mission/tagline güncellemesi — v0.2 ship + positioning review
+- [ ] `@ai-passport-core/cli` npm publish → v0.2.0
+- [ ] GitHub Release **v0.2.0**
 
 ### v0.5 MVP kriterleri (çıkış kapısı)
 
@@ -209,6 +212,7 @@ Bu politika **AI Passport** ve **diğer projeler** için geçerlidir. İnsanlar 
 | 0.1.3 | Sign in — `authorize`, `token exchange` |
 | 0.1.4 | `readiness` CLI, VS Code MCP format, extension scaffold |
 | 0.1.5 | Cloud sync prototype — `sync push/pull` (RFC 0006) |
+| 0.2.0 | Memory Provider API — `memory init/store`, grant `--memory`, MCP `get_memory_context` (RFC 0007) |
 | ext 0.1.0 | VS Code extension — [Marketplace](https://marketplace.visualstudio.com/items?itemName=mendocan.ai-passport) |
 
 Detay: [ROADMAP.md](ROADMAP.md) · Release notları: [releases/](releases/)

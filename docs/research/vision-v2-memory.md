@@ -14,7 +14,7 @@
 | **Primary** | One identity. Every AI. | One identity. One memory. Every AI. |
 | **Supporting** | Your AI identity. Everywhere. | Your AI identity, memory and trust. Everywhere. |
 
-**Decision:** Keep v1 mission on website and npm until RFC 0007 is Accepted and v0.2 ships. v2 messaging is positioning research, not a silent rebrand.
+**Decision:** Keep v1 mission on website and npm until positioning review. RFC 0007 **Accepted** with v0.2.0.
 
 ---
 

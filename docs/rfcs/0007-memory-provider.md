@@ -1,6 +1,6 @@
 # RFC 0007: Memory Provider API (v2 direction)
 
-- **Status:** Draft
+- **Status:** Accepted
 - **Author:** Mendocan
 - **Created:** 2026-07-06
 - **Depends on:** [RFC 0002](0002-provider-api.md), [RFC 0003](0003-permission-model.md), [RFC 0004](0004-encryption.md)
