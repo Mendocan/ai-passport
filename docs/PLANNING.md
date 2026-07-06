@@ -3,7 +3,7 @@
 > **Amaç:** Projeyi fazlar (ROADMAP) ile günlük işler (bu dosya) arasında net ayırarak istikrarlı ilerlemek.  
 > Stratejik vizyon: [ROADMAP.md](ROADMAP.md) · Prensipler: [MANIFESTO.md](MANIFESTO.md)
 
-**Son güncelleme:** 2026-07-04 · **npm:** `@ai-passport-core/cli@0.1.5` · `@ai-passport-core/sdk@0.1.0` · **Görünürlük:** X + LinkedIn (aşağıya bakın)
+**Son güncelleme:** 2026-07-06 · **npm:** `@ai-passport-core/cli@0.1.5` · `@ai-passport-core/sdk@0.1.0` · **v2:** RFC 0007 Draft
 
 ---
 
@@ -90,6 +90,7 @@ Internal/refactor serbest; public export ve CLI komut isimleri dikkatli değişt
 | 0004 | Encryption & key storage | ✓ Accepted |
 | 0005 | Sign in token format | ✓ Accepted |
 | 0006 | Cloud sync (E2E encrypted) | Draft — Phase 5 |
+| 0007 | Memory Provider API (v2) | Draft — [RFC](../rfcs/0007-memory-provider.md) · [vision](../research/vision-v2-memory.md) |
 
 Süreç: [RFC.md](RFC.md)
 
@@ -168,6 +169,18 @@ Bu politika **AI Passport** ve **diğer projeler** için geçerlidir. İnsanlar 
 - [x] VS Code extension paketi → `extensions/vscode/`
 - [x] VS Code Marketplace publish → [mendocan.ai-passport](https://marketplace.visualstudio.com/items?itemName=mendocan.ai-passport)
 - [ ] **v0.2+** çıkışında X + LinkedIn duyurusu ([Görünürlük](#görünürlük--x--linkedin) checklist)
+
+### v2 — Memory Provider (RFC 0007)
+
+> Gevşek bağlı mimari: Passport = kimlik + izin + context assembly; Memory = provider.  
+> Vizyon: [research/vision-v2-memory.md](research/vision-v2-memory.md)
+
+- [x] RFC 0007 Draft — Memory Provider API
+- [x] Vision v2 research doc
+- [ ] `feature/memory-provider` branch — interface + grant `memory` field
+- [ ] v0.2.0 prototype — `local-vault` stub, `memory status` CLI
+- [ ] MCP optional memory excerpt in `get_passport_context`
+- [ ] Mission/tagline güncellemesi — RFC Accepted + v0.2 ship sonrası
 
 ### v0.5 MVP kriterleri (çıkış kapısı)
 
