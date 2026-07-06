@@ -67,3 +67,13 @@ Documentation over code. Companies should say: *"We support AI Passport."*
 - [ ] Cloud sync (optional, E2E encrypted) — file provider ✓ v0.1.5; HTTP provider TBD
 - [x] VS Code extension package → [`extensions/vscode/`](../extensions/vscode/)
 - [x] VS Code extension Marketplace publish → [mendocan.ai-passport](https://marketplace.visualstudio.com/items?itemName=mendocan.ai-passport)
+
+## Phase 6 — Memory layer (v2, started)
+
+> Passport core stays identity + permissions. Long-term memory via [RFC 0007](rfcs/0007-memory-provider.md).
+
+- [x] Vision expansion research → [vision-v2-memory.md](research/vision-v2-memory.md)
+- [x] RFC 0007 Draft — Memory Provider API
+- [ ] v0.2 prototype — local vault provider + grant extension
+- [ ] Confidence metadata & knowledge graph — v0.3+
+- [ ] Agent handshake — RFC 0008 candidate

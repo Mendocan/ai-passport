@@ -30,7 +30,8 @@ ai-passport onboard cursor --yes
 | [API Contract](API.html) | CLI, SDK, MCP tools |
 | [Security](SECURITY.html) | Encryption and threat model |
 | [RFC Process](RFC.html) | Propose schema changes |
-| [RFC Index](rfcs/0001-passport-format.html) | Accepted specifications 0001–0005 |
+| [RFC Index](rfcs/0001-passport-format.html) | Specifications 0001–0007 |
+| [Vision v2 (research)](research/vision-v2-memory.html) | Memory layer direction (Draft) |
 | [Roadmap](ROADMAP.html) | Project phases |
 | [Planning & TODO](PLANNING.html) | SemVer, RFC backlog, active tasks |
 | [Demo script](DEMO.html) | 30-second wow moment |

@@ -89,3 +89,5 @@ Bunlar pazarlama cümlesi değil; mimari ve ürün kararlarında **veto hakkı**
 AI Passport bir “daha iyi prompt aracı” değil; **kullanıcı sahipliğinde kimlik standardı** olmayı hedefler. Yıllar sonra bu dosyaya bakıldığında umarız şunu görebiliriz: ilk gün konduğu ilkeler hâlâ ayakta, ekosistem büyümüş ama ruh aynı kalmış.
 
 *One identity. Every AI.*
+
+> **v2 research:** Optional memory layer via [Memory Provider API](rfcs/0007-memory-provider.html) — mission unchanged until v0.2.
