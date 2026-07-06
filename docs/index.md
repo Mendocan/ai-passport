@@ -18,7 +18,7 @@ npm install -g @ai-passport-core/cli
 ai-passport onboard cursor --yes
 ```
 
-![Demo — Cursor + AI Passport (~21s)](assets/demo.gif)
+![Demo — Cursor + AI Passport (~23s)](assets/demo.gif)
 
 ## Documentation
 

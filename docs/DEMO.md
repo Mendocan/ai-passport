@@ -2,7 +2,7 @@
 
 The "wow moment": Cursor reads your passport and answers from your real stack — without you re-explaining.
 
-**Current file:** [`assets/demo.gif`](assets/demo.gif) (~21s) — question, MCP `get_passport_context`, and full AI answer.
+**Current file:** [`assets/demo.gif`](assets/demo.gif) (~23s) — question, MCP `get_passport_context`, and full AI answer.
 
 ---
 
@@ -15,7 +15,7 @@ The "wow moment": Cursor reads your passport and answers from your real stack �
 
 ---
 
-## Recommended recording (25 seconds)
+## Recommended recording (23 seconds)
 
 Record **one continuous take**. Do not include terminal onboarding — passport is already set up.
 
@@ -23,8 +23,8 @@ Record **one continuous take**. Do not include terminal onboarding — passport 
 |------|-----------|--------|
 | 0:00–0:03 | Cursor chat (empty) | Optional: flash Settings → MCP → ai-passport ON |
 | 0:03–0:08 | Chat input | Type: `What languages and frameworks do I prefer?` → Enter |
-| 0:08–0:22 | Chat response | **Wait for full AI answer** (TypeScript, frameworks…) |
-| 0:22–0:25 | Same | Hold 2s on answer so viewers can read |
+| 0:08–0:21 | Chat response | **Wait for full AI answer** (TypeScript, frameworks…) |
+| 0:21–0:23 | Same | Hold 2s on answer so viewers can read |
 
 **Pass:** AI mentions your passport / coding profile — not generic advice.
 

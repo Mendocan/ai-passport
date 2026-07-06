@@ -44,7 +44,7 @@ Gerçek değer **standartta** — sadece CLI'da değil.
 | 2 | **SemVer'e sıkı bağlılık** | ROADMAP'te yoktu; bu dosyaya eklendi. | Bu dosyada ✓ |
 | 3 | **Testler** — şifreleme, bütünlük, yetki, şema, geriye uyumluluk | Kimlik katmanı için şart. Eksikler var. | Kısmen ✓ |
 | 4 | **RFC mantığı** — `/docs/rfcs/0001-...` | RFC 0001–0005 Accepted | ✓ |
-| 5 | **Demo GIF** — Cursor + AI answer (~21s) | ✓ [assets/demo.gif](assets/demo.gif) |
+| 5 | **Demo GIF** — Cursor + AI answer (~23s) | ✓ [assets/demo.gif](assets/demo.gif) |
 
 **Sonuç:** Öneriler **değerlendirilmeli ve uygulanmalı** — çoğu zaten yarı yolda; eksikler bu dosyada takip edilecek.
 
@@ -111,7 +111,7 @@ ai-passport onboard cursor --path . --yes
 | Görev | Durum |
 |-------|--------|
 | Adım adım rehber | ✓ [CURSOR_SETUP.md](CURSOR_SETUP.md) |
-| Demo GIF (~21s, MCP + cevap) | ✓ [assets/demo.gif](assets/demo.gif) |
+| Demo GIF (~23s, MCP + cevap) | ✓ [assets/demo.gif](assets/demo.gif) |
 
 ---
 

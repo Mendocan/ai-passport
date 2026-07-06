@@ -28,7 +28,7 @@ Without global install: `npx @ai-passport-core/cli init`
 
 ![AI Passport — Cursor reads your coding profile via MCP](docs/assets/demo.gif)
 
-*~21s — question, `get_passport_context`, and TypeScript/Node.js answer from your passport.*
+*~23s — question, `get_passport_context`, and TypeScript/Node.js answer from your passport.*
 
 ---
 
@@ -151,7 +151,7 @@ const context = await manager.export('cursor');
 .\scripts\demo.ps1
 ```
 
-See [docs/DEMO.md](docs/DEMO.md) · Record a new GIF with the **AI answer** on screen (~25s).
+See [docs/DEMO.md](docs/DEMO.md) · Record a new GIF with the **AI answer** on screen (~23s).
 
 ---
 
