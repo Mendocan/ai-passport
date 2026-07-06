@@ -157,7 +157,7 @@ Bu politika **AI Passport** ve **diğer projeler** için geçerlidir. İnsanlar 
 - [x] v0.3.0 memory deepening — confidence decay, verify, link, graph, MCP `get_memory_graph`
 - [x] npm publish `@0.3.0` / `@0.3.1` + grant `knowledge` + graph canlı test (CLI + Cursor)
 - [x] Cursor MCP memory/graph doğrulandı
-- [x] `@ai-passport-core/sdk` npm — CLI ile hizala → `@0.3.1` *(publish after commit)*
+- [x] `@ai-passport-core/sdk` npm — CLI ile hizala → `@0.3.1` ✓
 - [x] Mission/tagline — positioning review (tagline + VISION.md)
 
 ### Sonraki sprint
