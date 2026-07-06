@@ -1,7 +1,7 @@
 import type { GrantEntry } from '../../types/passport.js';
 import type { PassportContext } from '../permission.js';
 import { LocalVaultProvider, LOCAL_VAULT_ID } from './local-vault.js';
-import type { MemoryExcerpt, MemoryProvider, MemoryNamespace } from './types.js';
+import type { GraphExcerpt, MemoryExcerpt, MemoryProvider, MemoryNamespace, MemoryQuery } from './types.js';
 import { MEMORY_NAMESPACES } from './types.js';
 
 export class MemoryService {
@@ -29,6 +29,7 @@ export class MemoryService {
       consumer: grant.provider,
       namespaces: grant.memory.namespaces,
       limit: 50,
+      sort: 'confidence',
     });
 
     return {
@@ -47,6 +48,7 @@ export class MemoryService {
   async queryForConsumer(
     grant: GrantEntry,
     requestedNamespaces?: MemoryNamespace[],
+    options?: Pick<MemoryQuery, 'min_confidence' | 'sort' | 'limit'>,
   ): Promise<MemoryExcerpt> {
     if (!grant.memory) {
       throw new Error(
@@ -67,7 +69,46 @@ export class MemoryService {
     }
 
     const provider = this.resolveProvider(grant.memory.provider_id);
-    return provider.query({ consumer: grant.provider, namespaces, limit: 50 });
+    return provider.query({
+      consumer: grant.provider,
+      namespaces,
+      limit: options?.limit ?? 50,
+      min_confidence: options?.min_confidence,
+      sort: options?.sort ?? 'confidence',
+    });
+  }
+
+  /**
+   * Graph traversal for a consumer. Requires `knowledge` in the memory grant.
+   */
+  async graphForConsumer(
+    grant: GrantEntry,
+    rootId?: string,
+    relation?: string,
+  ): Promise<GraphExcerpt> {
+    if (!grant.memory) {
+      throw new Error(
+        `No memory grant for "${grant.provider}". Run \`ai-passport grant ${grant.provider} --memory <namespaces>\`.`,
+      );
+    }
+
+    if (!grant.memory.namespaces.includes('knowledge')) {
+      throw new Error(
+        `Graph queries require "knowledge" namespace in grant. Allowed: ${grant.memory.namespaces.join(', ')}.`,
+      );
+    }
+
+    const provider = this.resolveProvider(grant.memory.provider_id);
+    if (!provider.graph) {
+      throw new Error(`Memory provider "${grant.memory.provider_id}" does not support graph queries.`);
+    }
+
+    return provider.graph({
+      consumer: grant.provider,
+      root_id: rootId,
+      relation,
+      limit: 50,
+    });
   }
 }
 

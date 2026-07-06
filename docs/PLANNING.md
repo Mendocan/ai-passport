@@ -157,7 +157,6 @@ Bu politika **AI Passport** ve **diğer projeler** için geçerlidir. İnsanlar 
 - [x] Memory canlı test — `memory store` + `export cursor` → `memory.excerpt` ✓
 - [ ] Cursor MCP yeniden başlat → `get_memory_context` tool Cursor'da sor
 - [ ] v0.3 yönü seç: **memory derinleştirme** (confidence/graph) veya **RFC 0006 HTTP sync**
-- [ ] Test boşlukları: keychain fallback, corrupt meta, MCP tool contract smoke test
 - [ ] `@ai-passport-core/sdk` npm — CLI ile hizala (≥0.2.x)
 
 ### Tamamlandı — v0.2 ship (2026-07-06)

@@ -31,6 +31,8 @@ export function getPassportPaths(home?: string) {
     localVault: path.join(root, 'memory', 'local-vault'),
     localVaultMeta: path.join(root, 'memory', 'local-vault', 'vault.meta.json'),
     localVaultRecords: path.join(root, 'memory', 'local-vault', 'records'),
+    localVaultGraph: path.join(root, 'memory', 'local-vault', 'graph'),
+    localVaultGraphEdges: path.join(root, 'memory', 'local-vault', 'graph', 'edges.json'),
   };
 }
 

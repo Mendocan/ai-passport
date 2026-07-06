@@ -2,7 +2,7 @@ import fs from 'node:fs';
 
 import { AuthTokenStore, type TokenSummary } from './auth-token.js';
 import { MemoryService } from './memory/service.js';
-import type { MemoryExcerpt, MemoryNamespace } from './memory/types.js';
+import type { GraphExcerpt, MemoryExcerpt, MemoryNamespace, MemoryQuery } from './memory/types.js';
 import { generateMasterKey } from '../crypto/cipher.js';
 import { storeMasterKey, getKeyStorageKind } from '../crypto/keychain.js';
 import { createDefaultPassport, generatePassportId } from './identity.js';
@@ -194,13 +194,30 @@ export class PassportManager {
     return this.memoryService.enrichContext(this.permission.exportContext(passport, grant), grant);
   }
 
-  async queryMemory(provider: string, namespaces?: MemoryNamespace[]): Promise<MemoryExcerpt> {
+  async queryMemory(
+    provider: string,
+    namespaces?: MemoryNamespace[],
+    options?: Pick<MemoryQuery, 'min_confidence' | 'sort' | 'limit'>,
+  ): Promise<MemoryExcerpt> {
     const grant = this.permission.getActiveGrantForProvider(provider);
     if (!grant) {
       throw new Error(`No active grant for "${provider}". Run \`ai-passport grant ${provider}\` first.`);
     }
 
-    return this.memoryService.queryForConsumer(grant, namespaces);
+    return this.memoryService.queryForConsumer(grant, namespaces, options);
+  }
+
+  async queryMemoryGraph(
+    provider: string,
+    rootId?: string,
+    relation?: string,
+  ): Promise<GraphExcerpt> {
+    const grant = this.permission.getActiveGrantForProvider(provider);
+    if (!grant) {
+      throw new Error(`No active grant for "${provider}". Run \`ai-passport grant ${provider}\` first.`);
+    }
+
+    return this.memoryService.graphForConsumer(grant, rootId, relation);
   }
 
   listActiveGrants(): Array<{

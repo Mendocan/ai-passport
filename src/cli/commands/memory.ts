@@ -116,12 +116,15 @@ export function registerMemoryCommand(program: Command): void {
     .description('Query memory for a consumer (grant-scoped; same as MCP get_memory_context)')
     .argument('[consumer]', 'Consumer id', 'cursor')
     .option('--namespaces <list>', 'Comma-separated namespaces (defaults to all granted)')
+    .option('--min-confidence <value>', 'Minimum effective confidence (0–1)', (value) =>
+      Number.parseFloat(value),
+    )
     .option('--home <path>', 'Custom passport home directory')
     .option('--json', 'Output JSON')
     .action(
       async (
         consumer: string,
-        options: { namespaces?: string; home?: string; json?: boolean },
+        options: { namespaces?: string; minConfidence?: number; home?: string; json?: boolean },
       ) => {
         try {
           const passportManager = new PassportManager(options.home);
@@ -132,7 +135,9 @@ export function registerMemoryCommand(program: Command): void {
           const namespaces = options.namespaces
             ? parseMemoryNamespaces(options.namespaces)
             : undefined;
-          const excerpt = await passportManager.queryMemory(consumer, namespaces);
+          const excerpt = await passportManager.queryMemory(consumer, namespaces, {
+            min_confidence: options.minConfidence,
+          });
 
           if (options.json) {
             console.log(JSON.stringify(excerpt, null, 2));
@@ -158,7 +163,113 @@ export function registerMemoryCommand(program: Command): void {
             if (record.confidence !== undefined) {
               console.log(`  confidence: ${record.confidence}`);
             }
+            if (record.effective_confidence !== undefined) {
+              console.log(`  effective:  ${record.effective_confidence}`);
+            }
             console.log('');
+          }
+        } catch (error) {
+          handleCliError(error);
+        }
+      },
+    );
+
+  memory
+    .command('verify')
+    .description('Re-verify a memory record (resets decay clock)')
+    .argument('<record-id>', 'Memory record id')
+    .option('--confidence <value>', 'Update confidence 0.0–1.0', (value) => Number.parseFloat(value))
+    .option('--home <path>', 'Custom passport home directory')
+    .option('--json', 'Output JSON')
+    .action(
+      async (recordId: string, options: { confidence?: number; home?: string; json?: boolean }) => {
+        try {
+          const manager = new MemoryManager(options.home);
+          const record = manager.verify(recordId, options.confidence);
+
+          if (options.json) {
+            console.log(JSON.stringify(record, null, 2));
+            return;
+          }
+
+          console.log(`✓ Verified ${record.id}`);
+          console.log(`  confidence: ${record.confidence}`);
+          console.log(`  verified_at: ${record.verified_at}`);
+        } catch (error) {
+          handleCliError(error);
+        }
+      },
+    );
+
+  memory
+    .command('link')
+    .description('Link two memory records in the knowledge graph')
+    .argument('<from-id>', 'Source record id')
+    .argument('<to-id>', 'Target record id')
+    .argument('<relation>', 'Relation label (e.g. prefers, uses, part_of)')
+    .option('--home <path>', 'Custom passport home directory')
+    .option('--json', 'Output JSON')
+    .action(
+      async (
+        fromId: string,
+        toId: string,
+        relation: string,
+        options: { home?: string; json?: boolean },
+      ) => {
+        try {
+          const manager = new MemoryManager(options.home);
+          const edge = manager.link(fromId, toId, relation);
+
+          if (options.json) {
+            console.log(JSON.stringify(edge, null, 2));
+            return;
+          }
+
+          console.log(`✓ Linked ${edge.from_id} --[${edge.relation}]--> ${edge.to_id}`);
+          console.log(`  edge: ${edge.id}`);
+        } catch (error) {
+          handleCliError(error);
+        }
+      },
+    );
+
+  memory
+    .command('graph')
+    .description('Query knowledge graph for a consumer (requires knowledge namespace grant)')
+    .argument('[consumer]', 'Consumer id', 'cursor')
+    .option('--root <record-id>', 'Traverse from record id')
+    .option('--relation <name>', 'Filter by relation')
+    .option('--home <path>', 'Custom passport home directory')
+    .option('--json', 'Output JSON')
+    .action(
+      async (
+        consumer: string,
+        options: { root?: string; relation?: string; home?: string; json?: boolean },
+      ) => {
+        try {
+          const passportManager = new PassportManager(options.home);
+          if (!passportManager.exists()) {
+            throw new Error('Passport not found. Run `ai-passport init` first.');
+          }
+
+          const excerpt = await passportManager.queryMemoryGraph(
+            consumer,
+            options.root,
+            options.relation,
+          );
+
+          if (options.json) {
+            console.log(JSON.stringify(excerpt, null, 2));
+            return;
+          }
+
+          console.log(`Consumer: ${consumer}`);
+          console.log(`Nodes:    ${excerpt.nodes.length}`);
+          console.log(`Edges:    ${excerpt.edges.length}`);
+          console.log('');
+
+          for (const edge of excerpt.edges) {
+            console.log(`  ${edge.from_id} --[${edge.relation}]--> ${edge.to_id}`);
           }
         } catch (error) {
           handleCliError(error);

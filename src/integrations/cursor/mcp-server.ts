@@ -134,6 +134,36 @@ export async function startCursorMcpServer(options: CursorMcpOptions = {}): Prom
   );
 
   server.registerTool(
+    'get_memory_graph',
+    {
+      description:
+        'Returns knowledge graph nodes/edges for a granted consumer (requires knowledge namespace)',
+      inputSchema: {
+        consumer: z.string().optional().describe('Consumer id; defaults to configured consumer'),
+        root_id: z.string().optional().describe('Traverse from a specific record id'),
+        relation: z.string().optional().describe('Filter edges by relation'),
+      },
+    },
+    async ({ consumer, root_id, relation }) => {
+      try {
+        if (!manager.exists()) {
+          return toolError('Passport not found. Run `ai-passport init` first.');
+        }
+
+        const excerpt = await manager.queryMemoryGraph(
+          consumer ?? defaultConsumer,
+          root_id,
+          relation,
+        );
+        return toolJson(excerpt);
+      } catch (error) {
+        const message = error instanceof Error ? error.message : String(error);
+        return toolError(message);
+      }
+    },
+  );
+
+  server.registerTool(
     'list_grants',
     {
       description: 'Lists active grants (no secrets)',

@@ -6,6 +6,7 @@ import { describe, it } from 'node:test';
 
 import { MemoryManager } from '../src/core/memory/manager.js';
 import { MemoryService } from '../src/core/memory/service.js';
+import { effectiveConfidence, CONFIDENCE_HALF_LIFE_DAYS } from '../src/core/memory/confidence.js';
 import { Permission } from '../src/core/permission.js';
 import { Passport } from '../src/core/passport.js';
 import { PassportManager } from '../src/core/passport-manager.js';
@@ -150,6 +151,75 @@ describe('memory provider (RFC 0007 prototype)', () => {
     });
 
     await assert.rejects(() => passportManager.queryMemory('cursor', ['knowledge']));
+
+    fs.rmSync(tempHome, { recursive: true, force: true });
+  });
+
+  it('applies confidence decay based on verification age', () => {
+    const daysAgo = CONFIDENCE_HALF_LIFE_DAYS;
+    const verifiedAt = new Date(Date.now() - daysAgo * 86_400_000).toISOString();
+
+    const record = {
+      id: 'mem_test',
+      namespace: 'preferences' as const,
+      content: 'test',
+      confidence: 1,
+      verified_at: verifiedAt,
+      created_at: verifiedAt,
+      updated_at: verifiedAt,
+    };
+
+    const effective = effectiveConfidence(record);
+    assert.ok(Math.abs(effective - 0.5) < 0.05);
+  });
+
+  it('verify resets decay and link builds graph', async () => {
+    const tempHome = fs.mkdtempSync(path.join(os.tmpdir(), 'ai-passport-memory-v3-'));
+    const permissionsDir = path.join(tempHome, 'permissions');
+    fs.mkdirSync(permissionsDir, { recursive: true });
+    fs.writeFileSync(path.join(permissionsDir, 'grants.json'), JSON.stringify({ grants: [] }));
+
+    const memoryManager = new MemoryManager(tempHome);
+    await memoryManager.init();
+
+    const a = await memoryManager.store({
+      namespace: 'knowledge',
+      content: { entity: 'TypeScript' },
+      confidence: 0.9,
+    });
+    const b = await memoryManager.store({
+      namespace: 'preferences',
+      content: 'Uses TypeScript daily',
+      confidence: 0.8,
+    });
+
+    const edge = memoryManager.link(a.id, b.id, 'prefers');
+    assert.equal(edge.relation, 'prefers');
+
+    const passportManager = new PassportManager(tempHome);
+    await passportManager.init({ force: true });
+    await passportManager.grant({
+      provider: 'cursor',
+      sections: ['identity'],
+      memory: {
+        provider_id: 'local-vault',
+        namespaces: ['knowledge', 'preferences'],
+        mode: 'read',
+      },
+    });
+
+    const graph = await passportManager.queryMemoryGraph('cursor', a.id);
+    assert.equal(graph.edges.length, 1);
+    assert.equal(graph.nodes.length, 2);
+
+    const verified = memoryManager.verify(a.id, 0.99);
+    assert.equal(verified.confidence, 0.99);
+    assert.ok(verified.verified_at);
+
+    const excerpt = await passportManager.queryMemory('cursor', ['knowledge'], {
+      min_confidence: 0.5,
+    });
+    assert.ok(excerpt.records.some((record) => record.id === a.id));
 
     fs.rmSync(tempHome, { recursive: true, force: true });
   });

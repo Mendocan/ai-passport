@@ -31,6 +31,10 @@ export interface MemoryQuery {
   namespaces: MemoryNamespace[];
   intent?: string;
   limit?: number;
+  /** Minimum effective confidence after decay (0–1). */
+  min_confidence?: number;
+  /** Sort order for query results. */
+  sort?: 'confidence' | 'recency';
 }
 
 export interface MemoryRecord {
@@ -44,9 +48,33 @@ export interface MemoryRecord {
   updated_at: string;
 }
 
+export interface MemoryRecordView extends MemoryRecord {
+  effective_confidence?: number;
+}
+
 export interface MemoryExcerpt {
-  records: MemoryRecord[];
+  records: MemoryRecordView[];
   truncated: boolean;
+}
+
+export interface GraphEdge {
+  id: string;
+  from_id: string;
+  to_id: string;
+  relation: string;
+  created_at: string;
+}
+
+export interface GraphQuery {
+  consumer: string;
+  root_id?: string;
+  relation?: string;
+  limit?: number;
+}
+
+export interface GraphExcerpt {
+  nodes: MemoryRecordView[];
+  edges: GraphEdge[];
 }
 
 export interface MemoryStoreInput {
@@ -68,6 +96,7 @@ export interface MemoryProvider {
   status(): Promise<MemoryProviderStatus>;
   query(input: MemoryQuery): Promise<MemoryExcerpt>;
   store?(input: MemoryStoreInput): Promise<MemoryRecordRef>;
+  graph?(input: GraphQuery): Promise<GraphExcerpt>;
 }
 
 export interface MemoryProviderRegistration {

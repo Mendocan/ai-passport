@@ -2,7 +2,14 @@ import type { GrantEntry } from '../../types/passport.js';
 import { Permission } from '../permission.js';
 import { LocalVaultProvider } from './local-vault.js';
 import { defaultProvidersFile, readProvidersFile, writeProvidersFile } from './registry.js';
-import type { MemoryProviderStatus, MemoryRecordRef, MemoryStoreInput } from './types.js';
+import type {
+  GraphEdge,
+  GraphExcerpt,
+  MemoryProviderStatus,
+  MemoryRecord,
+  MemoryRecordRef,
+  MemoryStoreInput,
+} from './types.js';
 
 export interface MemoryStatus {
   enabled: boolean;
@@ -62,5 +69,17 @@ export class MemoryManager {
 
   async store(input: MemoryStoreInput): Promise<MemoryRecordRef> {
     return this.localVault.store(input);
+  }
+
+  verify(recordId: string, confidence?: number): MemoryRecord {
+    return this.localVault.verify(recordId, confidence);
+  }
+
+  link(fromId: string, toId: string, relation: string): GraphEdge {
+    return this.localVault.link(fromId, toId, relation);
+  }
+
+  async graph(rootId?: string, relation?: string): Promise<GraphExcerpt> {
+    return this.localVault.graph({ consumer: 'local', root_id: rootId, relation });
   }
 }
