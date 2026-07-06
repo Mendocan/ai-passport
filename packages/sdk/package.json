@@ -1,7 +1,7 @@
 {
   "name": "@ai-passport-core/sdk",
-  "version": "0.1.0",
-  "description": "Lightweight SDK for AI Passport — user-owned identity for AI apps (no CLI/MCP deps)",
+  "version": "0.3.1",
+  "description": "Lightweight SDK for AI Passport — user-owned identity and permissioned memory for AI apps (no CLI/MCP deps)",
   "type": "module",
   "main": "./dist/sdk/index.js",
   "types": "./dist/sdk/index.d.ts",

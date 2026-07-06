@@ -36,7 +36,9 @@ Without global install: `npx @ai-passport-core/cli init`
 
 > **One identity. Every AI.**
 
-Supporting line: *Your AI identity. Everywhere.*
+Supporting line: *Your AI identity and memory. Everywhere.*
+
+**Positioning:** Portable identity and permissioned memory for AI — you own the data.
 
 **North star:** A user should be recognized by any AI, with explicit permission, without having to start over.
 
@@ -170,7 +172,7 @@ npm test
 
 **Phase 4 complete** — Open spec index, compatibility checklist, RFC process.  
 **Phase 5 complete** — Sign in, cloud sync.  
-**Phase 6 (memory)** — RFC 0007 Accepted; CLI **`@0.3.1`** on [npm](https://www.npmjs.com/package/@ai-passport-core/cli) (confidence decay, knowledge graph).
+**Phase 6 (memory)** — RFC 0007 Accepted; CLI **`@0.3.1`** · SDK **`@0.3.1`** on [npm](https://www.npmjs.com/package/@ai-passport-core/cli) (confidence decay, knowledge graph).
 
 ---
 

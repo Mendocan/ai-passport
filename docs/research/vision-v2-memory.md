@@ -14,7 +14,7 @@
 | **Primary** | One identity. Every AI. | One identity. One memory. Every AI. |
 | **Supporting** | Your AI identity. Everywhere. | Your AI identity, memory and trust. Everywhere. |
 
-**Decision:** Keep v1 mission on website and npm until positioning review. RFC 0007 **Accepted** with v0.2.0.
+**Decision:** Primary mission unchanged. Tagline updated 2026-07-06 — see [VISION.md](../VISION.md#positioning-review-2026-07-06). RFC 0007 **Accepted** with v0.2.0; SDK aligned at v0.3.1.
 
 ---
 

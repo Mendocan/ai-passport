@@ -8,8 +8,15 @@
 | Element | Text |
 |---------|------|
 | **Mission (primary)** | One identity. Every AI. |
-| **Tagline (secondary)** | Your AI identity. Everywhere. |
+| **Tagline (secondary)** | Your AI identity and memory. Everywhere. |
 | **North star** | A user should be recognized by any AI, with explicit permission, without having to start over. |
+| **Positioning (marketing)** | Portable identity and permissioned memory for AI — you own the data. |
+
+### Positioning review (2026-07-06)
+
+Memory Provider shipped in CLI `@0.3.x` (RFC 0007). **Primary mission stays unchanged** — identity-first brand. **Tagline** now reflects memory as a first-class, opt-in layer (loosely coupled providers), not a separate product.
+
+Full v2 research: [research/vision-v2-memory.md](research/vision-v2-memory.md).
 
 ---
 

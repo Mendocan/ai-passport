@@ -1,6 +1,8 @@
 # @ai-passport-core/sdk
 
-Lightweight Node.js SDK for [AI Passport](https://github.com/Mendocan/ai-passport) — no CLI or MCP dependencies.
+Lightweight Node.js SDK for [AI Passport](https://github.com/Mendocan/ai-passport) — identity, grants, and memory-enriched export. No CLI or MCP dependencies.
+
+**Version:** aligned with `@ai-passport-core/cli` (currently `0.3.1`).
 
 ## Install
 
@@ -15,6 +17,7 @@ import { Passport } from '@ai-passport-core/sdk';
 
 const passport = await Passport.load();
 const context = await passport.export('my-app');
+// When grant includes memory namespaces, context.memory is populated (RFC 0007).
 ```
 
 Requires an existing passport (`ai-passport init` via the CLI, or `Passport.create()`).

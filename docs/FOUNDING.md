@@ -90,4 +90,4 @@ AI Passport bir “daha iyi prompt aracı” değil; **kullanıcı sahipliğinde
 
 *One identity. Every AI.*
 
-> **v2 research:** Optional memory layer via [Memory Provider API](rfcs/0007-memory-provider.html) — mission unchanged until v0.2.
+> **Memory layer:** [Memory Provider API](rfcs/0007-memory-provider.html) — tagline updated 2026-07-06; primary mission unchanged ([VISION.md](VISION.md)).

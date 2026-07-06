@@ -85,7 +85,7 @@ Check if a passport exists without loading.
 | `save(document)` | Write updated document |
 | `grant(request)` | Create permission grant |
 | `revoke(consumer)` | Revoke grants |
-| `export(consumer)` | Filtered context for consumer (audited) |
+| `export(consumer)` | Filtered context for consumer (audited); includes `memory` when grant has memory namespaces (RFC 0007) |
 | `peek(consumer)` | Read-only export (no audit) |
 | `listGrants()` | Active grants summary |
 | `authorize(client, options?)` | Issue sign-in token |
@@ -110,6 +110,7 @@ if (!passport.listGrants().some((g) => g.provider === 'cursor')) {
 
 const context = await passport.export('cursor');
 console.log(context.coding?.primary_languages);
+// context.memory — present when grant includes memory namespaces (CLI: --memory preferences,knowledge)
 ```
 
 ---

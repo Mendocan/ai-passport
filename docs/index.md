@@ -7,6 +7,8 @@ title: Home
 
 **One identity. Every AI.**
 
+*Your AI identity and memory. Everywhere.*
+
 Portable, user-owned identity for AI systems. You control your data — not OpenAI, not Anthropic, not Cursor.
 
 ## Get started

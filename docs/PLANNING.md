@@ -3,7 +3,7 @@
 > **Amaç:** Projeyi fazlar (ROADMAP) ile günlük işler (bu dosya) arasında net ayırarak istikrarlı ilerlemek.  
 > Stratejik vizyon: [ROADMAP.md](ROADMAP.md) · Prensipler: [MANIFESTO.md](MANIFESTO.md)
 
-**Son güncelleme:** 2026-07-06 · **npm:** `@ai-passport-core/cli@0.3.1` · `@ai-passport-core/sdk@0.1.0` · **RFC 0007** Accepted
+**Son güncelleme:** 2026-07-06 · **npm:** `@ai-passport-core/cli@0.3.1` · `@ai-passport-core/sdk@0.3.1` · **RFC 0007** Accepted
 
 ---
 
@@ -152,14 +152,17 @@ Bu politika **AI Passport** ve **diğer projeler** için geçerlidir. İnsanlar 
 
 ## Aktif yapılacaklar (öncelik sırası)
 
-### Şimdi — sonraki sprint
+### Tamamlandı — v0.3.1 sprint (2026-07-06)
 
 - [x] v0.3.0 memory deepening — confidence decay, verify, link, graph, MCP `get_memory_graph`
-- [x] npm publish `@0.3.0` + grant `knowledge` + graph canlı test (CLI + Cursor)
+- [x] npm publish `@0.3.0` / `@0.3.1` + grant `knowledge` + graph canlı test (CLI + Cursor)
 - [x] Cursor MCP memory/graph doğrulandı
-- [x] npm publish `@0.3.1` (PowerShell `--memory` fix) + GitHub Release
-- [ ] `@ai-passport-core/sdk` npm — CLI ile hizala (≥0.2.x)
-- [ ] Mission/tagline güncellemesi — positioning review (ertelenebilir)
+- [x] `@ai-passport-core/sdk` npm — CLI ile hizala → `@0.3.1` *(publish after commit)*
+- [x] Mission/tagline — positioning review (tagline + VISION.md)
+
+### Sonraki sprint
+
+- [ ] v0.3+ — graph merge, contradiction resolution, encrypted records (RFC 0004)
 
 ### Tamamlandı — v0.2 ship (2026-07-06)
 
@@ -167,7 +170,7 @@ Bu politika **AI Passport** ve **diğer projeler** için geçerlidir. İnsanlar 
 - [x] GitHub Release → [v0.2.0](https://github.com/Mendocan/ai-passport/releases/tag/v0.2.0), [v0.2.1](https://github.com/Mendocan/ai-passport/releases/tag/v0.2.1), [v0.3.0](https://github.com/Mendocan/ai-passport/releases/tag/v0.3.0), [v0.3.1](https://github.com/Mendocan/ai-passport/releases/tag/v0.3.1)
 - [x] README status güncellendi
 - [x] X + LinkedIn duyurusu + LinkedIn profil projesi
-- [ ] Mission/tagline güncellemesi — positioning review (ertelenebilir)
+- [x] Mission/tagline güncellemesi — positioning review (tagline + VISION.md)
 
 ### v2 — Memory Provider (RFC 0007) ✓ prototype
 
@@ -201,7 +204,7 @@ Bu politika **AI Passport** ve **diğer projeler** için geçerlidir. İnsanlar 
 |-------|-----------|
 | 0.1.0 | Core, CLI, MCP, git plugin |
 | 0.1.1 | SDK `Passport.load()` (CLI export) |
-| 0.1.0-sdk | `@ai-passport-core/sdk` standalone npm paketi |
+| 0.3.1-sdk | `@ai-passport-core/sdk@0.3.1` — CLI-aligned standalone package |
 | 0.1.2 | `onboard`, open spec, GitHub Pages |
 | 0.1.3 | Sign in — `authorize`, `token exchange` |
 | 0.1.4 | `readiness` CLI, VS Code MCP format, extension scaffold |
@@ -209,7 +212,7 @@ Bu politika **AI Passport** ve **diğer projeler** için geçerlidir. İnsanlar 
 | 0.2.0 | Memory Provider API — `memory init/store`, grant `--memory`, MCP `get_memory_context` (RFC 0007) |
 | 0.2.1 | CLI `--version` → npm sürümü; `info` → Schema etiketi |
 | 0.3.0 | Confidence decay, `memory verify/link/graph`, MCP `get_memory_graph` |
-| 0.3.1 | PowerShell `--memory` namespace parse fix (spaces + commas) |
+| 0.3.1 | PowerShell `--memory` namespace parse fix; SDK `@0.3.1` npm align |
 | ext 0.1.0 | VS Code extension — [Marketplace](https://marketplace.visualstudio.com/items?itemName=mendocan.ai-passport) |
 
 Detay: [ROADMAP.md](ROADMAP.md) · Release notları: [releases/](releases/)

@@ -43,7 +43,7 @@ Users grant each consumer scoped read access. Revoke anytime.
 
 ### Separate consumer packages
 
-- `@ai-passport-core/sdk` — **published** at `packages/sdk/` (no CLI/MCP deps)
+- `@ai-passport-core/sdk` — **published** `@0.3.1` at `packages/sdk/` (no CLI/MCP deps; aligned with CLI)
 - `ai-passport` VS Code extension — **workspace** at `extensions/vscode/`
 - `@ai-passport-core/cursor` — thin MCP wrapper (optional split from CLI)
 - Core remains IDE-agnostic
