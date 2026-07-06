@@ -3,7 +3,7 @@
 > **Amaç:** Projeyi fazlar (ROADMAP) ile günlük işler (bu dosya) arasında net ayırarak istikrarlı ilerlemek.  
 > Stratejik vizyon: [ROADMAP.md](ROADMAP.md) · Prensipler: [MANIFESTO.md](MANIFESTO.md)
 
-**Son güncelleme:** 2026-07-06 · **npm:** `@ai-passport-core/cli@0.2.1` · `@ai-passport-core/sdk@0.1.0` · **RFC 0007** Accepted
+**Son güncelleme:** 2026-07-06 · **npm:** `@ai-passport-core/cli@0.3.0` (local; publish pending) · `@ai-passport-core/sdk@0.1.0` · **RFC 0007** Accepted
 
 ---
 
@@ -27,7 +27,8 @@ Gerçek değer **standartta** — sadece CLI'da değil.
 | Sürüm | Anlam | Hedef |
 |-------|--------|--------|
 | **v0.1.x** | Deneysel — API değişebilir | Tamamlandı |
-| **v0.2.x** | Memory prototype — API evrilebilir | **Şu an** (0.2.1) |
+| **v0.2.x** | Memory prototype — API evrilebilir | Tamamlandı (0.2.1) |
+| **v0.3.x** | Memory deepening — decay, graph | **Şu an** (0.3.0 kod) |
 | **v0.5.x** | MVP — temel API donmuş, breaking nadir | Cursor + SDK + Sign-in stabil |
 | **v1.0.0** | İlk stabil standart — "We support AI Passport v1" | Spec + uyumluluk checklist kilitli |
 
@@ -156,7 +157,8 @@ Bu politika **AI Passport** ve **diğer projeler** için geçerlidir. İnsanlar 
 - [x] CLI `@0.2.1` global kurulum — `ai-passport --version` → `0.2.1`
 - [x] Memory canlı test — `memory store` + `export cursor` → `memory.excerpt` ✓
 - [ ] Cursor MCP yeniden başlat → `get_memory_context` tool Cursor'da sor
-- [ ] v0.3 yönü seç: **memory derinleştirme** (confidence/graph) veya **RFC 0006 HTTP sync**
+- [x] v0.3 yönü: **memory derinleştirme** (confidence decay + knowledge graph) — kod `0.3.0`
+- [ ] npm publish `@0.3.0` + GitHub Release + grant `knowledge` namespace test
 - [ ] `@ai-passport-core/sdk` npm — CLI ile hizala (≥0.2.x)
 
 ### Tamamlandı — v0.2 ship (2026-07-06)
@@ -175,7 +177,7 @@ Bu politika **AI Passport** ve **diğer projeler** için geçerlidir. İnsanlar 
 - [x] RFC 0007 Draft → Accepted
 - [x] `local-vault` stub, `memory init/status/store`, grant `--memory`
 - [x] MCP — `get_passport_context` enrichment + `get_memory_context`
-- [ ] v0.3+ — confidence metadata, knowledge graph
+- [ ] v0.3+ — graph merge, contradiction resolution, encrypted records (RFC 0004)
 
 ### v0.5 MVP kriterleri (çıkış kapısı)
 
@@ -206,6 +208,7 @@ Bu politika **AI Passport** ve **diğer projeler** için geçerlidir. İnsanlar 
 | 0.1.5 | Cloud sync prototype — `sync push/pull` (RFC 0006) |
 | 0.2.0 | Memory Provider API — `memory init/store`, grant `--memory`, MCP `get_memory_context` (RFC 0007) |
 | 0.2.1 | CLI `--version` → npm sürümü; `info` → Schema etiketi |
+| 0.3.0 | Confidence decay, `memory verify/link/graph`, MCP `get_memory_graph` |
 | ext 0.1.0 | VS Code extension — [Marketplace](https://marketplace.visualstudio.com/items?itemName=mendocan.ai-passport) |
 
 Detay: [ROADMAP.md](ROADMAP.md) · Release notları: [releases/](releases/)
