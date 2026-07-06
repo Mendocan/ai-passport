@@ -13,7 +13,7 @@ async function printInfo(home?: string): Promise<void> {
   const info = await manager.info();
 
   console.log(`Passport ID:  ${info.passportId}`);
-  console.log(`Version:      ${info.version}`);
+  console.log(`Schema:       ${info.version}`);
   console.log(`Providers:    ${info.providers.length > 0 ? info.providers.join(', ') : 'none'}`);
   console.log(`Permissions:  ${info.permissions} active grant(s)`);
   console.log(`Created:      ${info.created}`);
@@ -24,7 +24,7 @@ async function printInfo(home?: string): Promise<void> {
 export function registerInfoCommand(program: Command): void {
   program
     .command('info')
-    .description('Show passport metadata (ID, version, providers, permissions)')
+    .description('Show passport metadata (ID, schema version, providers, permissions)')
     .option('--home <path>', 'Custom passport home directory')
     .action(async (options: { home?: string }) => {
       try {

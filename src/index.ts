@@ -16,14 +16,14 @@ import { registerRevokeCommand } from './cli/commands/revoke.js';
 import { registerSyncCommand } from './cli/commands/sync.js';
 import { registerShowCommand } from './cli/commands/show.js';
 import { registerTokenCommand } from './cli/commands/token.js';
-import { PASSPORT_VERSION } from './types/passport.js';
+import { CLI_VERSION } from './cli/cli-version.js';
 
 const program = new Command();
 
 program
   .name('ai-passport')
   .description('One identity. Every AI. — portable user-owned identity for AI systems')
-  .version(PASSPORT_VERSION);
+  .version(CLI_VERSION);
 
 registerInitCommand(program);
 registerOnboardCommand(program);
