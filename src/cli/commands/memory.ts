@@ -1,6 +1,7 @@
 import { Command } from 'commander';
 
 import { MemoryManager } from '../../core/memory/manager.js';
+import { parseMemoryNamespaces } from '../../core/memory/service.js';
 import { handleCliError } from '../util.js';
 
 export function registerMemoryCommand(program: Command): void {
@@ -68,4 +69,44 @@ export function registerMemoryCommand(program: Command): void {
         handleCliError(error);
       }
     });
+
+  memory
+    .command('store')
+    .description('Store a memory record in the local vault (RFC 0007 prototype)')
+    .argument('<namespace>', 'Memory namespace (preferences,projects,interactions,knowledge,workflows)')
+    .argument('<content>', 'Record content — plain text or JSON')
+    .option('--home <path>', 'Custom passport home directory')
+    .option('--confidence <value>', 'Confidence 0.0–1.0', (value) => Number.parseFloat(value))
+    .option('--sources <count>', 'Number of supporting sources', (value) => Number.parseInt(value, 10))
+    .action(
+      async (
+        namespace: string,
+        content: string,
+        options: { home?: string; confidence?: number; sources?: number },
+      ) => {
+        try {
+          const [parsedNamespace] = parseMemoryNamespaces(namespace);
+          const manager = new MemoryManager(options.home);
+
+          let parsedContent: unknown;
+          try {
+            parsedContent = JSON.parse(content);
+          } catch {
+            parsedContent = content;
+          }
+
+          const ref = await manager.store({
+            namespace: parsedNamespace,
+            content: parsedContent,
+            confidence: options.confidence,
+            sources: options.sources,
+          });
+
+          console.log(`✓ Stored ${ref.id}`);
+          console.log(`  Namespace: ${ref.namespace}`);
+        } catch (error) {
+          handleCliError(error);
+        }
+      },
+    );
 }

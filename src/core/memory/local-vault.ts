@@ -7,6 +7,9 @@ import type {
   MemoryProvider,
   MemoryProviderStatus,
   MemoryQuery,
+  MemoryRecord,
+  MemoryRecordRef,
+  MemoryStoreInput,
   MemoryVaultMeta,
 } from './types.js';
 
@@ -59,6 +62,40 @@ export class LocalVaultProvider implements MemoryProvider {
       records: records as MemoryExcerpt['records'],
       truncated: files.length > limit,
     };
+  }
+
+  async store(input: MemoryStoreInput): Promise<MemoryRecordRef> {
+    const status = await this.status();
+    if (!status.ready) {
+      throw new Error('Local memory vault not initialized. Run `ai-passport memory init`.');
+    }
+
+    const paths = getPassportPaths(this.home);
+    const now = new Date().toISOString();
+    const id = `mem_${input.namespace}_${Date.now().toString(36)}_${Math.random().toString(36).slice(2, 8)}`;
+
+    const record: MemoryRecord = {
+      id,
+      namespace: input.namespace,
+      content: input.content,
+      confidence: input.confidence,
+      sources: input.sources,
+      created_at: now,
+      updated_at: now,
+    };
+
+    fs.writeFileSync(
+      path.join(paths.localVaultRecords, `${id}.json`),
+      JSON.stringify(record, null, 2),
+      'utf8',
+    );
+
+    const meta = this.readMeta();
+    meta.record_count += 1;
+    meta.updated_at = now;
+    fs.writeFileSync(paths.localVaultMeta, JSON.stringify(meta, null, 2), 'utf8');
+
+    return { id, namespace: input.namespace };
   }
 
   initialize(): MemoryVaultMeta {

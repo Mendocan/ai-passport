@@ -86,4 +86,71 @@ describe('memory provider (RFC 0007 prototype)', () => {
 
     fs.rmSync(tempHome, { recursive: true, force: true });
   });
+
+  it('stores a record and returns it in a scoped query', async () => {
+    const tempHome = fs.mkdtempSync(path.join(os.tmpdir(), 'ai-passport-memory-store-'));
+    const permissionsDir = path.join(tempHome, 'permissions');
+    fs.mkdirSync(permissionsDir, { recursive: true });
+    fs.writeFileSync(path.join(permissionsDir, 'grants.json'), JSON.stringify({ grants: [] }));
+
+    const memoryManager = new MemoryManager(tempHome);
+    await memoryManager.init();
+
+    const ref = await memoryManager.store({
+      namespace: 'preferences',
+      content: { fact: 'User prefers vertical video' },
+      confidence: 0.99,
+      sources: 17,
+    });
+
+    assert.match(ref.id, /^mem_preferences_/);
+
+    const statusAfterStore = await memoryManager.status();
+    assert.equal(statusAfterStore.providers[0]?.record_count, 1);
+
+    const passportManager = new PassportManager(tempHome);
+    await passportManager.init({ force: true });
+    await passportManager.grant({
+      provider: 'cursor',
+      sections: ['identity'],
+      memory: {
+        provider_id: 'local-vault',
+        namespaces: ['preferences', 'projects'],
+        mode: 'read',
+      },
+    });
+
+    const excerpt = await passportManager.queryMemory('cursor', ['preferences']);
+    assert.equal(excerpt.records.length, 1);
+    assert.equal(excerpt.records[0]?.id, ref.id);
+    assert.equal(excerpt.records[0]?.confidence, 0.99);
+
+    fs.rmSync(tempHome, { recursive: true, force: true });
+  });
+
+  it('rejects memory query for namespaces outside the grant', async () => {
+    const tempHome = fs.mkdtempSync(path.join(os.tmpdir(), 'ai-passport-memory-scope-'));
+    const permissionsDir = path.join(tempHome, 'permissions');
+    fs.mkdirSync(permissionsDir, { recursive: true });
+    fs.writeFileSync(path.join(permissionsDir, 'grants.json'), JSON.stringify({ grants: [] }));
+
+    const memoryManager = new MemoryManager(tempHome);
+    await memoryManager.init();
+
+    const passportManager = new PassportManager(tempHome);
+    await passportManager.init({ force: true });
+    await passportManager.grant({
+      provider: 'cursor',
+      sections: ['identity'],
+      memory: {
+        provider_id: 'local-vault',
+        namespaces: ['preferences'],
+        mode: 'read',
+      },
+    });
+
+    await assert.rejects(() => passportManager.queryMemory('cursor', ['knowledge']));
+
+    fs.rmSync(tempHome, { recursive: true, force: true });
+  });
 });

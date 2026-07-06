@@ -49,12 +49,25 @@ export interface MemoryExcerpt {
   truncated: boolean;
 }
 
+export interface MemoryStoreInput {
+  namespace: MemoryNamespace;
+  content: unknown;
+  confidence?: number;
+  sources?: number;
+}
+
+export interface MemoryRecordRef {
+  id: string;
+  namespace: MemoryNamespace;
+}
+
 export interface MemoryProvider {
   readonly id: string;
   readonly version: string;
 
   status(): Promise<MemoryProviderStatus>;
   query(input: MemoryQuery): Promise<MemoryExcerpt>;
+  store?(input: MemoryStoreInput): Promise<MemoryRecordRef>;
 }
 
 export interface MemoryProviderRegistration {

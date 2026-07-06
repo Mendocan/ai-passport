@@ -14,6 +14,7 @@ Consumers integrate with AI Passport via CLI, SDK, or MCP. They never read `pass
 | `ai-passport grant <consumer> --memory <ns>` | Grant + memory namespaces (RFC 0007) |
 | `ai-passport memory init` | Initialize local memory vault |
 | `ai-passport memory status` | Memory providers and grants |
+| `ai-passport memory store <ns> <content>` | Store a memory record in local vault |
 | `ai-passport authorize <client>` | Issue short-lived sign-in token |
 | `ai-passport token inspect <token>` | Token metadata (no context) |
 | `ai-passport token exchange <token>` | Exchange token for Passport Context |
@@ -98,6 +99,7 @@ Cursor `mcp.json` example: [`examples/mcp.cursor.json`](../examples/mcp.cursor.j
 | Tool | Description |
 |------|-------------|
 | `get_passport_status` | Readiness, grants summary, next steps, MCP config hint |
-| `get_passport_context` | Audited export for granted consumer |
+| `get_passport_context` | Audited export for granted consumer (includes `memory` block if granted) |
 | `get_active_project` | Read-only peek at first active project |
+| `get_memory_context` | Memory excerpt for granted consumer, scoped to allowed namespaces (RFC 0007) |
 | `list_grants` | Active grants summary (no secrets) |

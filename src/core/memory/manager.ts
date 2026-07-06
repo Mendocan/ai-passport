@@ -2,7 +2,7 @@ import type { GrantEntry } from '../../types/passport.js';
 import { Permission } from '../permission.js';
 import { LocalVaultProvider } from './local-vault.js';
 import { defaultProvidersFile, readProvidersFile, writeProvidersFile } from './registry.js';
-import type { MemoryProviderStatus } from './types.js';
+import type { MemoryProviderStatus, MemoryRecordRef, MemoryStoreInput } from './types.js';
 
 export interface MemoryStatus {
   enabled: boolean;
@@ -58,5 +58,9 @@ export class MemoryManager {
       providers: [localStatus],
       grants_with_memory: grantsWithMemory,
     };
+  }
+
+  async store(input: MemoryStoreInput): Promise<MemoryRecordRef> {
+    return this.localVault.store(input);
   }
 }

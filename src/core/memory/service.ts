@@ -1,7 +1,7 @@
 import type { GrantEntry } from '../../types/passport.js';
 import type { PassportContext } from '../permission.js';
 import { LocalVaultProvider, LOCAL_VAULT_ID } from './local-vault.js';
-import type { MemoryProvider, MemoryNamespace } from './types.js';
+import type { MemoryExcerpt, MemoryProvider, MemoryNamespace } from './types.js';
 import { MEMORY_NAMESPACES } from './types.js';
 
 export class MemoryService {
@@ -38,6 +38,36 @@ export class MemoryService {
         excerpt,
       },
     };
+  }
+
+  /**
+   * Direct memory query for a consumer, filtered to the namespaces its grant allows.
+   * Used by the dedicated `get_memory_context` MCP tool (RFC 0007).
+   */
+  async queryForConsumer(
+    grant: GrantEntry,
+    requestedNamespaces?: MemoryNamespace[],
+  ): Promise<MemoryExcerpt> {
+    if (!grant.memory) {
+      throw new Error(
+        `No memory grant for "${grant.provider}". Run \`ai-passport grant ${grant.provider} --memory <namespaces>\`.`,
+      );
+    }
+
+    const allowed = grant.memory.namespaces;
+    const namespaces =
+      requestedNamespaces && requestedNamespaces.length > 0
+        ? requestedNamespaces.filter((namespace) => allowed.includes(namespace))
+        : allowed;
+
+    if (namespaces.length === 0) {
+      throw new Error(
+        `Requested namespaces are not granted. Allowed: ${allowed.join(', ') || 'none'}.`,
+      );
+    }
+
+    const provider = this.resolveProvider(grant.memory.provider_id);
+    return provider.query({ consumer: grant.provider, namespaces, limit: 50 });
   }
 }
 
