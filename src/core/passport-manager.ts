@@ -1,6 +1,7 @@
 import fs from 'node:fs';
 
 import { AuthTokenStore, type TokenSummary } from './auth-token.js';
+import { MemoryService } from './memory/service.js';
 import { generateMasterKey } from '../crypto/cipher.js';
 import { storeMasterKey, getKeyStorageKind } from '../crypto/keychain.js';
 import { createDefaultPassport, generatePassportId } from './identity.js';
@@ -58,10 +59,12 @@ export interface AuthorizeResult {
 export class PassportManager {
   private readonly vault: Vault;
   private readonly permission: Permission;
+  private readonly memoryService: MemoryService;
 
   constructor(private readonly home?: string) {
     this.vault = new Vault(home);
     this.permission = new Permission(home);
+    this.memoryService = new MemoryService(home);
   }
 
   exists(): boolean {
@@ -167,7 +170,10 @@ export class PassportManager {
     }
 
     const passport = await this.read();
-    const context = this.permission.exportContext(passport, grant);
+    const context = await this.memoryService.enrichContext(
+      this.permission.exportContext(passport, grant),
+      grant,
+    );
 
     this.permission.appendAccessLog(provider, grant.id, grant.sections);
 
@@ -184,7 +190,7 @@ export class PassportManager {
     }
 
     const passport = await this.read();
-    return this.permission.exportContext(passport, grant);
+    return this.memoryService.enrichContext(this.permission.exportContext(passport, grant), grant);
   }
 
   listActiveGrants(): Array<{
@@ -193,6 +199,7 @@ export class PassportManager {
     sections: string[];
     issued_at: string;
     project_filter?: string;
+    memory?: GrantEntry['memory'];
   }> {
     return this.permission.getActiveGrants().map((grant) => ({
       id: grant.id,
@@ -200,6 +207,7 @@ export class PassportManager {
       sections: grant.sections,
       issued_at: grant.issued_at,
       project_filter: grant.project_filter,
+      memory: grant.memory,
     }));
   }
 

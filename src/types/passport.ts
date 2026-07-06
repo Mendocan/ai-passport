@@ -1,3 +1,5 @@
+import type { MemoryGrant } from '../core/memory/types.js';
+
 export const PASSPORT_VERSION = '1.0.0';
 
 export const SECTION_IDS = [
@@ -117,6 +119,7 @@ export interface GrantEntry {
   sections: SectionId[];
   project_filter?: 'active_only' | 'all';
   fields?: Partial<Record<SectionId, string[]>>;
+  memory?: MemoryGrant;
   issued_at: string;
   expires_at: string | null;
   revoked: boolean;

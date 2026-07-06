@@ -5,6 +5,7 @@ import { Command } from 'commander';
 import { registerAuthorizeCommand } from './cli/commands/authorize.js';
 import { registerOnboardCommand } from './cli/commands/onboard.js';
 import { registerPluginCommand } from './cli/commands/plugin.js';
+import { registerMemoryCommand } from './cli/commands/memory.js';
 import { registerMcpCommand } from './cli/commands/mcp.js';
 import { registerExportCommand } from './cli/commands/export.js';
 import { registerGrantCommand } from './cli/commands/grant.js';
@@ -36,6 +37,7 @@ registerRevokeCommand(program);
 registerTokenCommand(program);
 registerExportCommand(program);
 registerMcpCommand(program);
+registerMemoryCommand(program);
 registerPluginCommand(program);
 registerSyncCommand(program);
 

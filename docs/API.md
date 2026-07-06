@@ -11,6 +11,9 @@ Consumers integrate with AI Passport via CLI, SDK, or MCP. They never read `pass
 | `ai-passport readiness [--consumer] [--json]` | Readiness for consumer (VS Code extension, scripts) |
 | `ai-passport info` | Passport ID, version, providers, permissions |
 | `ai-passport grant <consumer>` | Approve scoped read access |
+| `ai-passport grant <consumer> --memory <ns>` | Grant + memory namespaces (RFC 0007) |
+| `ai-passport memory init` | Initialize local memory vault |
+| `ai-passport memory status` | Memory providers and grants |
 | `ai-passport authorize <client>` | Issue short-lived sign-in token |
 | `ai-passport token inspect <token>` | Token metadata (no context) |
 | `ai-passport token exchange <token>` | Exchange token for Passport Context |
