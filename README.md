@@ -170,7 +170,7 @@ npm test
 
 **Phase 4 complete** — Open spec index, compatibility checklist, RFC process.  
 **Phase 5 complete** — Sign in, cloud sync.  
-**Phase 6 (memory)** — RFC 0007 Accepted; CLI **`@0.2.1`** on [npm](https://www.npmjs.com/package/@ai-passport-core/cli).
+**Phase 6 (memory)** — RFC 0007 Accepted; CLI **`@0.3.1`** on [npm](https://www.npmjs.com/package/@ai-passport-core/cli) (confidence decay, knowledge graph).
 
 ---
 
