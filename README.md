@@ -50,6 +50,7 @@ Supporting line: *Your AI identity. Everywhere.*
 | **Permissions** | Grant / revoke per AI consumer (Cursor, etc.) |
 | **Git plugin** | Detect languages, frameworks, project from repo |
 | **MCP server** | Cursor reads passport via `ai-passport mcp serve` |
+| **Memory provider** | Local vault + grant-scoped context (RFC 0007) |
 | **Portable schema** | Open `passport.schema.json` format |
 
 ---
@@ -79,13 +80,17 @@ MCP config (after global install):
 |---------|-------------|
 | `ai-passport init` | Create encrypted passport |
 | `ai-passport onboard [consumer]` | First-time setup + MCP config |
-| `ai-passport info` | Passport ID, grants, version |
+| `ai-passport info` | Passport ID, grants, schema version |
 | `ai-passport grant <consumer>` | Approve scoped access |
 | `ai-passport authorize <client>` | Sign in — issue short-lived token |
 | `ai-passport token exchange <token>` | Exchange token for context JSON |
 | `ai-passport revoke <consumer>` | Revoke all grants |
 | `ai-passport export <consumer>` | Filtered JSON context |
 | `ai-passport plugin run git` | Analyze repo → coding profile |
+| `ai-passport memory init` | Initialize local memory vault |
+| `ai-passport memory status` | Memory provider status |
+| `ai-passport memory store <ns> <text>` | Store a scoped memory record |
+| `ai-passport grant <consumer> --memory <ns>` | Grant with memory namespaces |
 | `ai-passport mcp serve` | Start MCP server (stdio) |
 
 ---
@@ -163,7 +168,8 @@ npm test
 ## Status
 
 **Phase 4 complete** — Open spec index, compatibility checklist, RFC process.  
-**Phase 5 complete** · **Phase 6 (memory)** — v0.2.0 RFC 0007 Accepted; CLI `@0.2.0` publish pending.
+**Phase 5 complete** — Sign in, cloud sync.  
+**Phase 6 (memory)** — RFC 0007 Accepted; CLI **`@0.2.1`** on [npm](https://www.npmjs.com/package/@ai-passport-core/cli).
 
 ---
 
