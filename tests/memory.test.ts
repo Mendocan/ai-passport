@@ -5,7 +5,7 @@ import path from 'node:path';
 import { describe, it } from 'node:test';
 
 import { MemoryManager } from '../src/core/memory/manager.js';
-import { MemoryService } from '../src/core/memory/service.js';
+import { MemoryService, parseMemoryNamespaces } from '../src/core/memory/service.js';
 import { effectiveConfidence, CONFIDENCE_HALF_LIFE_DAYS } from '../src/core/memory/confidence.js';
 import { Permission } from '../src/core/permission.js';
 import { Passport } from '../src/core/passport.js';
@@ -222,5 +222,15 @@ describe('memory provider (RFC 0007 prototype)', () => {
     assert.ok(excerpt.records.some((record) => record.id === a.id));
 
     fs.rmSync(tempHome, { recursive: true, force: true });
+  });
+
+  it('parses space-separated namespaces (PowerShell comma quirk)', () => {
+    const parsed = parseMemoryNamespaces('preferences projects knowledge');
+    assert.deepEqual(parsed, ['preferences', 'projects', 'knowledge']);
+  });
+
+  it('parses array namespaces from shell', () => {
+    const parsed = parseMemoryNamespaces(['preferences', 'projects', 'knowledge']);
+    assert.deepEqual(parsed, ['preferences', 'projects', 'knowledge']);
   });
 });

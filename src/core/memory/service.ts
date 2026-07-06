@@ -112,9 +112,14 @@ export class MemoryService {
   }
 }
 
-export function parseMemoryNamespaces(value: string): MemoryNamespace[] {
-  const namespaces = value
-    .split(',')
+/**
+ * Parse namespace lists from CLI/MCP input.
+ * Accepts comma- or space-separated strings (PowerShell turns commas into spaces).
+ */
+export function parseMemoryNamespaces(value: string | string[]): MemoryNamespace[] {
+  const text = Array.isArray(value) ? value.join(' ') : value;
+  const namespaces = text
+    .split(/[,\s]+/)
     .map((part) => part.trim())
     .filter(Boolean);
 

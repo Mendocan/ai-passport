@@ -1,6 +1,6 @@
 {
   "name": "@ai-passport-core/cli",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Portable user-owned identity layer for AI systems — CLI, core API, and MCP adapter",
   "type": "module",
   "workspaces": [
