@@ -26,6 +26,11 @@ export function getPassportPaths(home?: string) {
     tokens: path.join(root, 'auth', 'tokens.json'),
     pluginsDir: path.join(root, 'plugins'),
     syncConfig: path.join(root, 'sync.json'),
+    memoryDir: path.join(root, 'memory'),
+    memoryProviders: path.join(root, 'memory', 'providers.json'),
+    localVault: path.join(root, 'memory', 'local-vault'),
+    localVaultMeta: path.join(root, 'memory', 'local-vault', 'vault.meta.json'),
+    localVaultRecords: path.join(root, 'memory', 'local-vault', 'records'),
   };
 }
 

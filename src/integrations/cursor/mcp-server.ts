@@ -3,6 +3,7 @@ import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js'
 import { z } from 'zod';
 
 import { PassportManager } from '../../core/passport-manager.js';
+import { parseMemoryNamespaces } from '../../core/memory/service.js';
 import { formatReadinessHint, getPassportReadiness } from '../../core/readiness.js';
 import { PASSPORT_VERSION } from '../../types/passport.js';
 
@@ -96,6 +97,35 @@ export async function startCursorMcpServer(options: CursorMcpOptions = {}): Prom
         const context = await manager.peekExport(consumer ?? defaultConsumer);
         const project = context.projects?.[0] ?? null;
         return toolJson({ project, grant_id: context.grant_id, provider: context.provider });
+      } catch (error) {
+        const message = error instanceof Error ? error.message : String(error);
+        return toolError(message);
+      }
+    },
+  );
+
+  server.registerTool(
+    'get_memory_context',
+    {
+      description:
+        'Returns a memory excerpt for a granted consumer, filtered to allowed namespaces (RFC 0007 prototype)',
+      inputSchema: {
+        consumer: z.string().optional().describe('Consumer id; defaults to configured consumer'),
+        namespaces: z
+          .string()
+          .optional()
+          .describe('Comma-separated namespaces (preferences,projects,interactions,knowledge,workflows); defaults to all granted'),
+      },
+    },
+    async ({ consumer, namespaces }) => {
+      try {
+        if (!manager.exists()) {
+          return toolError('Passport not found. Run `ai-passport init` first.');
+        }
+
+        const parsedNamespaces = namespaces ? parseMemoryNamespaces(namespaces) : undefined;
+        const excerpt = await manager.queryMemory(consumer ?? defaultConsumer, parsedNamespaces);
+        return toolJson(excerpt);
       } catch (error) {
         const message = error instanceof Error ? error.message : String(error);
         return toolError(message);

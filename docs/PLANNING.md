@@ -177,9 +177,9 @@ Bu politika **AI Passport** ve **diğer projeler** için geçerlidir. İnsanlar 
 
 - [x] RFC 0007 Draft — Memory Provider API
 - [x] Vision v2 research doc
-- [ ] `feature/memory-provider` branch — interface + grant `memory` field
-- [ ] v0.2.0 prototype — `local-vault` stub, `memory status` CLI
-- [ ] MCP optional memory excerpt in `get_passport_context`
+- [x] `feature/memory-provider` branch — interface + grant `memory` field
+- [x] v0.2.0 prototype — `local-vault` stub, `memory init/status/store`, grant `--memory`
+- [x] MCP memory excerpt — `get_passport_context` enrichment + dedicated `get_memory_context` tool
 - [ ] Mission/tagline güncellemesi — RFC Accepted + v0.2 ship sonrası
 
 ### v0.5 MVP kriterleri (çıkış kapısı)

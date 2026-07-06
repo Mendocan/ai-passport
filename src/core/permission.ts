@@ -1,5 +1,6 @@
 import fs from 'node:fs';
 
+import type { MemoryExcerpt } from './memory/types.js';
 import type { Passport } from './passport.js';
 import { ensurePassportDirs, getPassportPaths } from './paths.js';
 import type {
@@ -21,6 +22,10 @@ export interface PassportContext {
   preferences?: Partial<PreferencesSection>;
   coding?: CodingSection;
   projects?: Array<Partial<ProjectEntry>>;
+  memory?: {
+    provider: string;
+    excerpt: MemoryExcerpt;
+  };
 }
 
 export interface GrantRequest {
@@ -28,6 +33,7 @@ export interface GrantRequest {
   sections: SectionId[];
   project_filter?: GrantEntry['project_filter'];
   fields?: Partial<Record<SectionId, string[]>>;
+  memory?: GrantEntry['memory'];
 }
 
 export const GRANTABLE_SECTIONS: SectionId[] = ['identity', 'preferences', 'coding', 'projects'];
@@ -89,6 +95,7 @@ export class Permission {
       sections: request.sections,
       project_filter: request.project_filter ?? 'active_only',
       fields: request.fields,
+      memory: request.memory,
       issued_at: new Date().toISOString(),
       expires_at: null,
       revoked: false,

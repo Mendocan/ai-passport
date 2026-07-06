@@ -243,11 +243,13 @@ ai-passport grant cursor --memory preferences,projects
 
 | Phase | Target | Deliverable |
 |-------|--------|-------------|
-| **A** | Now | RFC 0007 Draft + vision doc |
-| **B** | v0.2.0 | Provider interface types, `local-vault` stub, grant `memory` field |
-| **C** | v0.2.x | MCP memory excerpt, basic `memory store` CLI |
+| **A** | Now | RFC 0007 Draft + vision doc — done |
+| **B** | v0.2.0 | Provider interface types, `local-vault` stub, grant `memory` field — done |
+| **C** | v0.2.x | MCP memory excerpt (`get_passport_context` + `get_memory_context`), `memory store` CLI — done |
 | **D** | v0.3+ | Confidence metadata, graph index |
 | **E** | v1.0 | Provider certification, third-party vaults |
+
+**Phase C notes:** `store()` is user/CLI-initiated only — no silent agent writes. `get_memory_context` filters requested namespaces down to what the grant allows and rejects out-of-scope requests.
 
 **Timeline intent:** Phase B starts within days on `feature/memory-provider`, not weeks of docs-only.
 
