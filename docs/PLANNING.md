@@ -157,14 +157,14 @@ Bu politika **AI Passport** ve **diğer projeler** için geçerlidir. İnsanlar 
 - [x] v0.3.0 memory deepening — confidence decay, verify, link, graph, MCP `get_memory_graph`
 - [x] npm publish `@0.3.0` + grant `knowledge` + graph canlı test (CLI + Cursor)
 - [x] Cursor MCP memory/graph doğrulandı
-- [ ] npm publish `@0.3.1` (PowerShell `--memory` fix) + GitHub Release
+- [x] npm publish `@0.3.1` (PowerShell `--memory` fix) + GitHub Release
 - [ ] `@ai-passport-core/sdk` npm — CLI ile hizala (≥0.2.x)
 - [ ] Mission/tagline güncellemesi — positioning review (ertelenebilir)
 
 ### Tamamlandı — v0.2 ship (2026-07-06)
 
-- [x] `@ai-passport-core/cli` npm → [v0.2.0](https://www.npmjs.com/package/@ai-passport-core/cli), [v0.2.1](https://www.npmjs.com/package/@ai-passport-core/cli) (version display fix)
-- [x] GitHub Release → [v0.2.0](https://github.com/Mendocan/ai-passport/releases/tag/v0.2.0), [v0.2.1](https://github.com/Mendocan/ai-passport/releases/tag/v0.2.1)
+- [x] `@ai-passport-core/cli` npm → [v0.2.0](https://www.npmjs.com/package/@ai-passport-core/cli), [v0.2.1](https://www.npmjs.com/package/@ai-passport-core/cli), [v0.3.0](https://www.npmjs.com/package/@ai-passport-core/cli), [v0.3.1](https://www.npmjs.com/package/@ai-passport-core/cli)
+- [x] GitHub Release → [v0.2.0](https://github.com/Mendocan/ai-passport/releases/tag/v0.2.0), [v0.2.1](https://github.com/Mendocan/ai-passport/releases/tag/v0.2.1), [v0.3.0](https://github.com/Mendocan/ai-passport/releases/tag/v0.3.0), [v0.3.1](https://github.com/Mendocan/ai-passport/releases/tag/v0.3.1)
 - [x] README status güncellendi
 - [x] X + LinkedIn duyurusu + LinkedIn profil projesi
 - [ ] Mission/tagline güncellemesi — positioning review (ertelenebilir)
